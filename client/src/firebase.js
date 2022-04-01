@@ -1,14 +1,15 @@
-import firebase from "firebase/app"
-import "firebase/auth"
+import { initializeApp } from "firebase/app"
+import { getAuth } from "firebase/auth"
+
 
 const firebaseConfig = {
-    apiKey: process.env.FIREBASE_APP_API_KEY,
-    authDomain: process.env.FIREBASE_APP_AUTH_DOMAIN,
-    projectId: process.env.FIREBASE_APP_PROJECT_ID,
-    storageBucket: process.env.FIREBASE_APP_STORAGE_BUCKET,
-    messagingSenderId: process.env.FIREBASE_APP_MESSAGING_SENDER_ID,
-    appId: process.env.FIREBASE_APP_API_APP_ID,
-  };
+  apiKey: "AIzaSyCLFOPOVW4RkXeKeQchgfqEhdilJuXWA7A",
+  authDomain: "pvp-project-a4ccc.firebaseapp.com",
+  projectId: "pvp-project-a4ccc",
+  storageBucket: "pvp-project-a4ccc.appspot.com",
+  messagingSenderId: "544828563716",
+  appId: "1:544828563716:web:09454e1df33af6d8107051"
+}
 
-export const auth = app.auth()
-export default app
+const app = initializeApp(firebaseConfig)
+export const auth = getAuth(app)

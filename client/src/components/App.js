@@ -1,6 +1,7 @@
-import React from "react";
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Router from '../router';
+import React from "react"
+import { ThemeProvider, createTheme } from '@mui/material/styles'
+import Router from '../router'
+import { AuthProvider } from "../contexts/AuthContext"
 
 const theme = createTheme({
   palette: {
@@ -9,28 +10,27 @@ const theme = createTheme({
       main: '#437F97',
     },
     secondary:{
-      main: '#D4AFB9',
+      main: '#FFB30F',
     },
     error:{
       main: '#DD050A',
-    },
-    warning:{
-      main: '#FFB30F',
     },
     success:{
       main: '#849324',
     },
     text: {
       primary: '#000000',
-    }
+    },
   },
-});
+})
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <Router/>
-    </ThemeProvider>
+      <AuthProvider>
+        <ThemeProvider theme={theme}>
+          <Router/>
+        </ThemeProvider>
+      </AuthProvider>
   );
 }
 

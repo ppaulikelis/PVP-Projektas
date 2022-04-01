@@ -1,74 +1,64 @@
+import { Button, Card, CardContent, Container, Typography } from '@mui/material';
 import React from 'react'
-import Header from './Header';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { Card, CardContent } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import Background from './additional/Background';
+import MainHeader from './headers/MainHeader';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import { Box } from '@mui/system';
 
 export default function Home() {
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      gameCode: data.get('gameCode'),
-      password: data.get('password'),
-    });
-  };
+  const navigate = useNavigate()
 
   return (
-    <div style={{
-      backgroundImage: `url("/background.png")`,
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-      height:'100vh',
-      }}>
-      <Header/>
-      <Container component="main" maxWidth="sm">
+    <Background>
+      <MainHeader/>
+      <Container maxWidth="md" sx={{pb: 5}}>
         <Card sx={{mt: 5, borderRadius: '20px'}}>
-          <CardContent sx={{my: 5, mx: 5}}>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Typography textAlign='center' component="h1" variant="h4" sx={{mb: 2}}>
-            Projekto pavadinimas
-          </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              fullWidth
-              id="gameCode"
-              label="Žaidimo kodas"
-              name="gameCode"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              fullWidth
-              name="password"
-              label="Slaptažodis"
-              type="password"
-              id="password"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Dalyvauti
-            </Button>
-          </Box>
-        </Box>
-        </CardContent>
+          <CardContent sx={{backgroundColor: '#AFC139'}}>
+            <Box py={5} px={2}>
+              <Typography variant="h3" component="div" align='center' sx={{ color: 'white'}}>
+                Edukacinių orientacinių varžybų ruošimas tau ir tavo mokyklai
+              </Typography>
+            </Box>
+          </CardContent>
+        </Card>
+        {/* <Card sx={{mt: 5, borderRadius: '20px'}}>
+          <CardContent sx={{backgroundColor: '#AFC139'}}>
+            <Box py={5} px={2}>
+              <Typography variant="h4" component="div" align='center' sx={{ color: 'white'}}>
+                Jau pats laikas tavo mokyklai išbandyti edukacinių orientacinių varžybų kūrimo ir žaidimo platformą. Nesnausk, prisijunk jau šiandien!
+              </Typography>
+            </Box>
+          </CardContent>
+        </Card> */}
+        <Card sx={{mt: 5, borderRadius: '20px'}}>
+          <CardContent sx={{backgroundColor: '#437F97'}}>
+            <Box py={5} px={2}>
+              <Typography variant="h3" component="div" align='center' sx={{ color: 'white'}}>
+                Turi žaidimo koduką?
+              </Typography>
+              <Typography variant="h4" component="div" align='center' sx={{ color: 'white'}}>
+                Nedelsk ir prisijunk prie varžybų!
+              </Typography>
+              <Box textAlign='center'>
+                <Button
+                  fullWidth
+                  variant='contained'
+                  size='large'
+                  color="secondary"
+                  sx={{ color: 'white', mt: 5, p: 1}}
+                  endIcon={<PlayArrowIcon/>}
+                  onClick={() => navigate('/gamecode')}
+                >
+                <Typography variant="h5" component="div" align='center' sx={{ color: 'white'}}>
+                  Žaisti
+                </Typography>
+                </Button>
+              </Box>
+            </Box>
+          </CardContent>
         </Card>
       </Container>
-    </div>
+    </Background>
   )
 }
