@@ -11,6 +11,7 @@ import { useAuthContext } from '../../contexts/AuthContext';
 import { Avatar } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const pages = [
   {
@@ -44,12 +45,24 @@ const MainHeader = () => {
   const { user, logout } = useAuthContext()
   const navigate = useNavigate()
   const [anchorEl, setAnchorEl] = React.useState(null)
+  const [loading, setLoading] = React.useState(false)
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget)
   }
 
   const handleClose = () => {
     setAnchorEl(null)
+  }
+
+  const handleLogout = async () => {
+    setLoading(true)
+    try{
+      await logout()
+      navigate('/')
+    } catch(err) {
+      alert(err.message)
+    }
+    setLoading(false)
   }
 
   return (
@@ -118,7 +131,7 @@ const MainHeader = () => {
               onClose={handleClose}
             >
               <MenuItem sx={{justifyContent: 'center'}} onClick={() => navigate("/creator")}>Skydelis</MenuItem>
-              <MenuItem onClick={() => logout()}>Atsijungti</MenuItem>
+              <MenuItem disabled={loading} onClick={() => handleLogout()}>{loading ? <CircularProgress color='secondary'/> : 'Atsijungti'}</MenuItem>
             </Menu>
             </React.Fragment>
             :

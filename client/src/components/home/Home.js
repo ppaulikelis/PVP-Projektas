@@ -1,8 +1,8 @@
 import { Button, Card, CardContent, Container, Typography } from '@mui/material';
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import Background from './additional/Background';
-import MainHeader from './headers/MainHeader';
+import Background from '../additional/Background'
+import MainHeader from '../headers/MainHeader';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { Box } from '@mui/system';
 
@@ -12,21 +12,21 @@ export default function Home() {
   return (
     <Background>
       <MainHeader/>
+      <Card sx={{mt: 5, borderTopRightRadius: '50px', borderBottomRightRadius: '50px', width: '50%'}}>
+        <CardContent sx={{backgroundColor: '#AFC139'}}>
+          <Box py={1} px={2}>
+            <Typography variant="h3" component="div" align='right' sx={{ color: 'white'}}>
+              Edukacinių orientacinių varžybų ruošimas tau ir tavo mokyklai
+            </Typography>
+          </Box>
+        </CardContent>
+      </Card>
       <Container maxWidth="md" sx={{pb: 5}}>
-        <Card sx={{mt: 5, borderRadius: '20px'}}>
-          <CardContent sx={{backgroundColor: '#AFC139'}}>
-            <Box py={5} px={2}>
-              <Typography variant="h3" component="div" align='center' sx={{ color: 'white'}}>
-                Edukacinių orientacinių varžybų ruošimas tau ir tavo mokyklai
-              </Typography>
-            </Box>
-          </CardContent>
-        </Card>
         {/* <Card sx={{mt: 5, borderRadius: '20px'}}>
           <CardContent sx={{backgroundColor: '#AFC139'}}>
-            <Box py={5} px={2}>
-              <Typography variant="h4" component="div" align='center' sx={{ color: 'white'}}>
-                Jau pats laikas tavo mokyklai išbandyti edukacinių orientacinių varžybų kūrimo ir žaidimo platformą. Nesnausk, prisijunk jau šiandien!
+            <Box py={1} px={2}>
+              <Typography variant="h3" component="div" align='center' sx={{ color: 'white'}}>
+                Edukacinių orientacinių varžybų ruošimas tau ir tavo mokyklai
               </Typography>
             </Box>
           </CardContent>

@@ -3,32 +3,46 @@ import {
     BrowserRouter as Router,
     Routes,
     Route,
+    Navigate,
   } from "react-router-dom"
-import AboutUs from './components/AboutUs'
-import Contacts from './components/Contacts'
-import Faq from './components/Faq'
-import Home from './components/Home'
-import Reviews from './components/Reviews'
-import SignIn from './components/SignIn'
-import SignUp from './components/SignUp'
-import GameCode from './components/GameCode'
-import Dashboard from './components/Dashboard'
+import AboutUs from './components/home/AboutUs'
+import Contacts from './components/home/Contacts'
+import Faq from './components/home/Faq'
+import Home from './components/home/Home'
+import Reviews from './components/home/Reviews'
+import SignIn from './components/home/SignIn'
+import SignUp from './components/home/SignUp'
+import GameCode from './components/home/GameCode'
+import Dashboard from './components/creator/Dashboard'
+import { useAuthContext } from './contexts/AuthContext'
 
 
-export default function router() {
+const AppRouter = () =>{
+  const { user } = useAuthContext()
+
   return (
     <Router>
       <Routes>
         <Route exact path="/" element={<Home/>} />
-        <Route path="/signin" element={<SignIn/>} />
-        <Route path="/signup" element={<SignUp/>} />
         <Route path="/about" element={<AboutUs/>} />
         <Route path="/reviews" element={<Reviews/>} />
+        <Route path="/gamecode" element={<GameCode/>} />
         <Route path="/faq" element={<Faq/>} />
         <Route path="/contacts" element={<Contacts/>} />
-        <Route path="/gamecode" element={<GameCode/>} />
-        <Route path="/creator" element={<Dashboard/>} />
+        {!user && (
+          <>
+            <Route path="/signin" element={<SignIn/>} />
+            <Route path="/signup" element={<SignUp/>} />
+          </>
+        )}
+        {user && (
+          <>
+            <Route path="/creator" element={<Dashboard/>} />
+          </>
+        )}
+        <Route path="*" element={<Navigate to="/"/>}/>
       </Routes>
     </Router>
   )
 }
+export default AppRouter

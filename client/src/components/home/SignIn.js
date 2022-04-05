@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -9,20 +9,31 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { Card, CardContent } from '@mui/material';
-import { useAuthContext } from '../contexts/AuthContext';
-import Background from './additional/Background';
-import MainHeader from './headers/MainHeader';
+import { useAuthContext } from '../../contexts/AuthContext';
+import Background from '../additional/Background'
+import MainHeader from '../headers/MainHeader';
+import { useNavigate } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function SignIn() {
-  const { signIn, error } = useAuthContext()
+  const { signIn } = useAuthContext()
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
     const email = data.get('email')
     const password = data.get('password')
-    signIn(email, password)
-  };
+    setLoading(true)
+    try{
+      await signIn(email, password)
+      navigate('/creator')
+    } catch(err) {
+      alert(err.message)
+    }
+    setLoading(false)
+  }
 
   return (
     <Background>
@@ -64,21 +75,15 @@ export default function SignIn() {
                   id="password"
                   autoComplete="current-password"
                 />
-                {error ? 
-                <Typography component="p" color="error" sx={{mt: 2}}>
-                  {error}
-                </Typography>
-                :
-                <></>
-                }
                 <Button
                   type="submit"
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2, color: 'white' }}
                   color='secondary'
+                  disabled={loading}
                 >
-                  Prisijungti
+                  {loading ? <CircularProgress color='secondary'/> : 'Prisijungti'}
                 </Button>
                 <Grid container>
                   <Grid item xs>

@@ -1,7 +1,7 @@
 import { Avatar, Card, CardContent, Container, Typography } from '@mui/material';
 import React from 'react'
-import Background from './additional/Background';
-import MainHeader from './headers/MainHeader';
+import Background from '../additional/Background';
+import MainHeader from '../headers/MainHeader';
 import { Box } from '@mui/system';
 
 const employees = [

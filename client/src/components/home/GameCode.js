@@ -5,8 +5,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { Card, CardContent } from '@mui/material';
-import Background from './additional/Background';
-import MainHeader from './headers/MainHeader';
+import Background from '../additional/Background'
+import MainHeader from '../headers/MainHeader';
 
 export default function GameCode() {
   const handleSubmit = (event) => {

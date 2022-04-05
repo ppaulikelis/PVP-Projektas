@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
@@ -8,21 +8,35 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import { Card, CardContent } from '@mui/material'
-import { useAuthContext } from '../contexts/AuthContext'
-import Background from './additional/Background'
-import MainHeader from './headers/MainHeader'
+import { useAuthContext } from '../../contexts/AuthContext'
+import Background from '../additional/Background'
+import MainHeader from '../headers/MainHeader';
+import { useNavigate } from 'react-router-dom'
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 export default function SignUp() {
-  const { signUp, error } = useAuthContext()
+  const { signUp } = useAuthContext()
+  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
     const email = data.get('email')
     const password = data.get('password')
     const confirmPassword = data.get('confirmPassword')
-    signUp(email, password)
+    if(password !== confirmPassword){
+      return alert('Passwords dont match')
+    }
+    setLoading(true)
+    try{
+      await signUp(email, password)
+      navigate('/creator')
+    } catch(err) {
+      alert(err.message)
+    }
+    setLoading(false)
   }
   
   return (
@@ -73,19 +87,15 @@ export default function SignUp() {
                   type="password"
                   id="confirmPassword"
                 />
-                {error ? 
-                <Typography component="p" color="error" sx={{mt: 2}}>
-                  {error}
-                </Typography>
-                : <></>}
                 <Button
                   type="submit"
                   fullWidth
                   variant="contained"
                   color="secondary"
                   sx={{ mt: 3, mb: 2, color: 'white' }}
+                  disabled={loading}
                 >
-                  Registruotis
+                  {loading ? <CircularProgress color='secondary'/> : 'Registruotis'}
                 </Button>               
               </Box>
               <Link href="/signin" variant="body2">

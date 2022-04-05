@@ -12,29 +12,25 @@ export const useAuthContext = () => {
 export function AuthProvider({children}) {
 	const [user, setUser] = useState(null)
 	const [loading, setLoading] = useState(true)
-	const [error, setError] = useState('')
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, res => {
 			res ? setUser(res) : setUser(null)
 			setLoading(false)
-			setError('')
 		})
 		return unsubscribe
 	}, [])
 
 	const signUp = (email, password) => {
-		createUserWithEmailAndPassword(auth, email, password)
-		.catch((err) => setError(err.message))
+		return createUserWithEmailAndPassword(auth, email, password)
 	}
 
 	const signIn = (email, password) => {
-		signInWithEmailAndPassword(auth, email, password)
-		.catch((err) => setError(err.message))
+		return signInWithEmailAndPassword(auth, email, password)
 	}
 
 	const logout = () => {
-		signOut(auth)
+		return signOut(auth)
 	}
 
 	const forgotPassword = (email) => {
@@ -47,7 +43,6 @@ export function AuthProvider({children}) {
 		signIn,
 		logout,
 		forgotPassword,
-		error
 	}
 
   return (
