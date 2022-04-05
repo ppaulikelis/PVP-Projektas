@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <Background>
       <MainHeader/>
-      <Card sx={{mt: 5, borderTopRightRadius: '50px', borderBottomRightRadius: '50px', width: '50%'}}>
+      {/* <Card sx={{mt: 5, borderTopRightRadius: '50px', borderBottomRightRadius: '50px', width: {lg: '50%', md: '90%', sm: '90%', xs: '95%'}}}>
         <CardContent sx={{backgroundColor: '#AFC139'}}>
           <Box py={1} px={2}>
             <Typography variant="h3" component="div" align='right' sx={{ color: 'white'}}>
@@ -20,9 +20,9 @@ export default function Home() {
             </Typography>
           </Box>
         </CardContent>
-      </Card>
+      </Card> */}
       <Container maxWidth="md" sx={{pb: 5}}>
-        {/* <Card sx={{mt: 5, borderRadius: '20px'}}>
+        <Card sx={{mt: 5, borderRadius: '20px'}}>
           <CardContent sx={{backgroundColor: '#AFC139'}}>
             <Box py={1} px={2}>
               <Typography variant="h3" component="div" align='center' sx={{ color: 'white'}}>
@@ -30,7 +30,7 @@ export default function Home() {
               </Typography>
             </Box>
           </CardContent>
-        </Card> */}
+        </Card>
         <Card sx={{mt: 5, borderRadius: '20px'}}>
           <CardContent sx={{backgroundColor: '#437F97'}}>
             <Box py={5} px={2}>
