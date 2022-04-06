@@ -30,13 +30,18 @@ const pages = [
     important: true,
   },
   {
+    name: 'Kontaktai',
+    url: '/contacts',
+    important: false,
+  },
+  {
     name: 'D.U.K',
     url: '/faq',
     important: false,
   },
   {
-    name: 'Kontaktai',
-    url: '/contacts',
+    name: 'PRENUMERATA',
+    url: '/faq',
     important: false,
   },
 ];

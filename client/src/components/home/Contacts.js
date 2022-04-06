@@ -10,17 +10,17 @@ export default function Contacts() {
     <Background>
       <MainHeader/>
       <Container maxWidth="md" sx={{pb: 5}}>
-        <Card sx={{mt: 5, borderRadius: '20px'}}>
-          <CardContent sx={{backgroundColor: '#AFC139'}}>
+        <Card sx={{mt: 5, borderRadius: '48px'}}>
+          <CardContent sx={{background: 'linear-gradient(180deg, #AFC139 0%, #5D7E17 100%);'}}>
             <Box py={1} px={2}>
               <Typography variant="h4" component="div" align='center' sx={{ color: 'white'}}>
-                Kontaktai
+                Susisiekite su mumis
               </Typography>
             </Box>
           </CardContent>
         </Card>
         <Card sx={{my: 5, borderRadius: '20px'}}>
-          <CardContent sx={{backgroundColor: '#437F97'}}>
+          <CardContent sx={{background: 'linear-gradient(180deg, #55B0D5 0%, #1176AF 71.35%);'}}>
             <Box py={5} px={2} display="flex">
               <Box sx={{display: 'flex', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                 <ConnectWithoutContactIcon sx={{color: 'white', fontSize: 175}}/>

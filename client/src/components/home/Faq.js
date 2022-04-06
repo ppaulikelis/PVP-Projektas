@@ -137,8 +137,8 @@ export default function Faq() {
     <Background>
       <MainHeader/>
       <Container maxWidth="md" sx={{pb: 5}}>
-        <Card sx={{mt: 5, borderRadius: '20px'}}>
-          <CardContent sx={{backgroundColor: '#AFC139'}}>
+        <Card sx={{mt: 5, borderRadius: '48px'}}>
+          <CardContent sx={{background: 'linear-gradient(180deg, #AFC139 0%, #5D7E17 100%);'}}>
             <Box py={1} px={2}>
               <Typography variant="h4" component="div" align='center' sx={{ color: 'white'}}>
                 Dažnai užduodami klausimai
@@ -147,8 +147,8 @@ export default function Faq() {
           </CardContent>
         </Card>
         {faq.map((topic, index) => (
-          <Card sx={{my: 5, borderRadius: '20px'}}>
-          <CardContent sx={{backgroundColor: index % 2 === 0 ? '#437F97' : '#FDB5C9'}}>
+          <Card sx={{my: 5, borderRadius: '69px'}}>
+          <CardContent sx={{background: index % 2 === 0 ? 'linear-gradient(180deg, #55B0D5 0%, #1176AF 71.35%)' : 'linear-gradient(180deg, #FE5D97 33.85%, #FDAFC5 89.58%)'}}>
             <Box py={5} px={2} display="flex" flexDirection='column'>
               <Typography variant="h4" component="div" align='center' sx={{ color: 'white'}}>
                 {topic.topic}
@@ -160,11 +160,11 @@ export default function Faq() {
                   expandIcon={<ExpandMoreIcon sx={{ color: 'white'}}/>}
                   aria-controls="panel1a-content"
                   id="panel1a-header"
-                  sx={{backgroundColor: index % 2 === 0 ? '#437F97' : '#FDB5C9'}}
+                  sx={{backgroundColor: index % 2 === 0 ? '#55B0D5' : '#FF8CB6'}}
                 >
                   <Typography sx={{ color: 'white'}}>{question.question}</Typography>
                 </AccordionSummary>
-                <AccordionDetails sx={{backgroundColor: index % 2 === 0 ? '#437F97' : '#FDB5C9'}}>
+                <AccordionDetails sx={{backgroundColor: index % 2 === 0 ? '#2997D6' : '#FF76A7'}}>
                   <Typography sx={{ color: 'white'}}>
                     {question.answer}
                   </Typography>

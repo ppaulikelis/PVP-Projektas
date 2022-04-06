@@ -18,11 +18,11 @@ const employees = [
     img: '/logo192.png'
   },
   {
-    name: 'Goda',
+    name: 'Erikas',
     img: '/logo192.png'
   },
   {
-    name: 'Erikas',
+    name: 'Goda',
     img: '/logo192.png'
   },
 ];
@@ -33,17 +33,19 @@ export default function AboutUs() {
     <Background>
       <MainHeader/>
       <Container maxWidth="md" sx={{pb: 5}}>
-        <Card sx={{mt: 5, borderRadius: '20px'}}>
-          <CardContent sx={{backgroundColor: '#AFC139'}}>
+        <Card sx={{mt: 5, borderRadius: '48px'}}>
+          <CardContent sx={{background: 'linear-gradient(180deg, #AFC139 0%, #5D7E17 100%);'}}>   
             <Box py={1} px={2}>
-              <Typography variant="h4" component="div" align='center' sx={{ color: 'white'}}>
+              <Typography variant="h4" component="div" align='center' sx={{ color: 'white', textShadowColor: 'rgba(0, 0, 0, 0.25)',
+      textShadowOffset: { width: 0, height: 4 }, 
+      textShadowRadius: 4} }>
                 Apie mus
               </Typography>
             </Box>
           </CardContent>
         </Card>
-        <Card sx={{my: 5, borderRadius: '20px'}}>
-          <CardContent sx={{backgroundColor: '#437F97'}}>
+        <Card sx={{my: 5, borderRadius: '69px'}}>
+          <CardContent sx={{background: 'linear-gradient(180deg, #55B0D5 0%, #1176AF 71.35%);'}}>
             <Box py={5} px={2} display="flex">
               <Box sx={{display: 'flex', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                 <img alt={"logo"} src={"/logo_white.png"} width={'400px'}/>
@@ -60,8 +62,8 @@ export default function AboutUs() {
             </Box>
           </CardContent>
         </Card>
-        <Card sx={{my: 5, borderRadius: '20px'}}>
-          <CardContent sx={{backgroundColor: '#FDB5C9'}}>
+        <Card sx={{my: 5, borderRadius: '69px'}}>
+          <CardContent sx={{background: 'linear-gradient(180deg, #FE5D97 33.85%, #FDAFC5 89.58%);'}}>
             <Box py={5} px={2} display="flex" flexDirection='column'>
               <Typography variant="h4" component="div" align='center' sx={{ color: 'white'}}>
                   ORIS komanda
