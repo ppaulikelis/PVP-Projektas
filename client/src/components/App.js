@@ -3,6 +3,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { AuthProvider } from '../contexts/AuthContext';
 import HomeDashboard from './home/HomeDashboard';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import CreatorDashboard from './creator/CreatorDashboard';
 
 const theme = createTheme({
   palette: {
@@ -33,6 +34,7 @@ function App() {
           <Routes>
             <Route exact path="" element={<Navigate to="/home" />} />
             <Route path="/home/*" element={<HomeDashboard />} />
+            <Route path="/creator/*" element={<CreatorDashboard />} />
           </Routes>
         </Router>
       </ThemeProvider>

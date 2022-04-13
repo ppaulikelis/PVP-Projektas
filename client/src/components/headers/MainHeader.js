@@ -94,7 +94,7 @@ const MainHeader = () => {
             src="/logo_white.png"
           />
           <Typography variant="h5" noWrap component="div">
-            <Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="/">
+            <Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="/home">
               ORIS
             </Link>
           </Typography>

@@ -12,8 +12,11 @@ import Faq from './Faq';
 import Subscription from './Subscription';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 export default function HomeDashboard() {
+  const { user } = useAuthContext();
+
   return (
     <Background>
       <MainHeader />
@@ -26,8 +29,12 @@ export default function HomeDashboard() {
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/subscription" element={<Subscription />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
+          {!user && (
+            <>
+              <Route path="/signin" element={<SignIn />} />
+              <Route path="/signup" element={<SignUp />} />
+            </>
+          )}
         </Routes>
       </Container>
     </Background>
