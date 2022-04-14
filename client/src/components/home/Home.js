@@ -48,7 +48,7 @@ export default function Home() {
           sx={{
             background: 'linear-gradient(180deg, #55B0D5 0%, #1176AF 71.35%);'
           }}>
-          <Box py={5} px={2}>
+          <Box py={2} px={2}>
             <Typography
               variant="h3"
               component="div"

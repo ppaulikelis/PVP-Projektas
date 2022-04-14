@@ -177,7 +177,7 @@ export default function Faq() {
                   ? 'linear-gradient(180deg, #55B0D5 0%, #1176AF 71.35%)'
                   : 'linear-gradient(180deg, #FE5D97 33.85%, #FDAFC5 89.58%)'
             }}>
-            <Box py={5} px={2} display="flex" flexDirection="column">
+            <Box py={2} px={2} display="flex" flexDirection="column">
               <Typography variant="h4" component="div" align="center" sx={{ color: 'white' }}>
                 {topic.topic}
               </Typography>

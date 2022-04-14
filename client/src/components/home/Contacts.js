@@ -23,7 +23,7 @@ export default function Contacts() {
           sx={{
             background: 'linear-gradient(180deg, #55B0D5 0%, #1176AF 71.35%);'
           }}>
-          <Box py={5} px={2} display="flex">
+          <Box py={2} px={2} display="flex">
             <Box
               sx={{
                 display: 'flex',
@@ -36,7 +36,7 @@ export default function Contacts() {
             <Box
               sx={{
                 display: 'flex',
-                flex: 1,
+                flex: 2,
                 justifyContent: 'center',
                 alignItems: 'left',
                 flexDirection: 'column'
