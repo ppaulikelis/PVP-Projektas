@@ -38,7 +38,7 @@ export default function SignUp() {
 
   return (
     <Container maxWidth="sm">
-      <Card sx={{ mt: 5, borderRadius: '20px' }}>
+      <Card sx={{ mt: 2, borderRadius: '20px' }}>
         <CardContent sx={{ mt: 3, mb: 5, mx: 5 }}>
           <Box
             sx={{

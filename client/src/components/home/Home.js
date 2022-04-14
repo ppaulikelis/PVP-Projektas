@@ -18,7 +18,7 @@ export default function Home() {
           </Box>
         </CardContent>
       </Card> */}
-      <Card sx={{ mt: 5, borderRadius: '48px' }}>
+      <Card sx={{ mt: 2, borderRadius: '48px' }}>
         <CardContent
           sx={{
             background: 'linear-gradient(180deg, #FE5D97 33.85%, #FDAFC5 89.58%);'
@@ -30,7 +30,7 @@ export default function Home() {
           </Box>
         </CardContent>
       </Card>
-      <Card sx={{ mt: 5, borderRadius: '48px' }}>
+      <Card sx={{ mt: 2, borderRadius: '48px' }}>
         <CardContent
           sx={{
             background: 'linear-gradient(180deg, #AFC139 0%, #5D7E17 100%);'

@@ -156,12 +156,12 @@ const faq = [
 export default function Faq() {
   return (
     <>
-      <Card sx={{ mt: 5, borderRadius: '48px' }}>
+      <Card sx={{ mt: 2, borderRadius: '48px' }}>
         <CardContent
           sx={{
             background: 'linear-gradient(180deg, #AFC139 0%, #5D7E17 100%);'
           }}>
-          <Box py={1} px={2}>
+          <Box px={2}>
             <Typography variant="h4" component="div" align="center" sx={{ color: 'white' }}>
               Dažnai užduodami klausimai
             </Typography>
