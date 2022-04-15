@@ -17,7 +17,7 @@ export default function CreatorHeader() {
           onClick={() => {
             navigate('/creator');
           }}>
-          Varžybos
+          Orientacinės
         </Button>
         <Typography component="div" variant="h5" sx={{ color: 'white' }}>
           |

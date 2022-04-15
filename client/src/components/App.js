@@ -20,6 +20,9 @@ const theme = createTheme({
     success: {
       main: '#849324'
     },
+    info: {
+      main: '#FFFFFF'
+    },
     text: {
       primary: '#000000'
     }
