@@ -21,8 +21,22 @@ export default function Home() {
           </Box>
         </CardContent>
       </Card> */}
-     
-      <Card sx={{ mt: 2, borderRadius: '48px' }}>
+
+     <Card sx={{ mt: 2, borderBottomRightRadius: '48px', borderTopRightRadius: '48px', position: "absolute", 
+                 width: 1380, height: 100, left: 0, top: 110 }}>
+     <CardContent
+          sx={{
+            background: 'linear-gradient(180deg, #FE5D97 33.85%, #FDAFC5 89.58%);'
+          }}>
+          <Box py={1} px={2}>
+          <Typography variant="h3" component="div" align="left" sx={{ color: 'white' }}>
+              Edukacinių orientacinių varžybų ruošimas tau ir tavo mokyklai
+            </Typography>
+          </Box>
+        </CardContent>
+      </Card>
+
+      {/*<Card sx={{ mt: 2, borderRadius: '48px' }}>
         <CardContent
           sx={{
             background: 'linear-gradient(180deg, #FE5D97 33.85%, #FDAFC5 89.58%);'
@@ -33,21 +47,24 @@ export default function Home() {
             </Typography>
           </Box>
         </CardContent>
-      </Card>
-      <Card sx={{ mt: 2, borderRadius: '48px' }}>
+      </Card>*/}
+
+      <Card sx={{ mt: 0, borderBottomLeftRadius: '48px', borderTopLeftRadius: '48px', position: "absolute", 
+                  width: 1169, height: 100, left: 350, top: 250 }}>
         <CardContent
           sx={{
             background: 'linear-gradient(180deg, #AFC139 0%, #5D7E17 100%);'
           }}>
           <Box py={1} px={2}>
-            <Typography variant="h5" component="div" align="center" sx={{ color: 'white' }}>
+            <Typography variant="h5" component="div" align="left" sx={{ color: 'white' }}>
               Jau pats laikas TAVO mokyklai išbandyti edukacinių - orientacinių varžybų kūrimo ir
               žaidimo platformą. Nesnausk, užsisakyk jau šiandien!
             </Typography>
           </Box>
         </CardContent>
       </Card>
-      <Card sx={{ mt: 5, borderRadius: '20px' }}>
+
+      <Card sx={{ mt: 40, borderRadius: '20px' }}>
         <CardContent
           sx={{
             background: 'linear-gradient(180deg, #55B0D5 0%, #1176AF 71.35%);'
@@ -77,7 +94,8 @@ export default function Home() {
                 </Typography>
               </Button>
             </Box>
-            <br />
+            <br/>
+            <br/>
             <Typography
               variant="h3"
               component="div"

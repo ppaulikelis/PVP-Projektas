@@ -8,19 +8,25 @@ import LoyaltyIcon from '@mui/icons-material/Loyalty';
 export default function Subscription() {
   return (
   <>
-  <Card sx={{ mt: 2, borderRadius: '48px' }}>
+  <Card sx={{mt: 2,  borderBottomRightRadius: '48px', borderTopRightRadius: '48px', position: "absolute", 
+                 width: 1380, height: 80, left: -100, top: 110}}>
     <CardContent
       sx={{
         background: 'linear-gradient(180deg, #AFC139 0%, #5D7E17 100%);'
       }}>
       <Box px={2}>
-        <Typography variant="h4" component="div" align="center" sx={{ color: 'white' }}>
+        <Typography 
+        variant="h4" 
+        component="div" 
+        align="right"
+        paddingRight={46} 
+        sx={{ color: 'white' }}>
           Prenumerata
         </Typography>
       </Box>
     </CardContent>
   </Card>
-  <Card sx={{ my: 5, borderRadius: '20px' }}>
+  <Card sx={{ my: 20, borderRadius: '20px' }}>
     <CardContent
       sx={{
         background: 'linear-gradient(180deg, #55B0D5 0%, #1176AF 71.35%);'

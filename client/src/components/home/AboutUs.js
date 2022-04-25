@@ -28,7 +28,8 @@ const employees = [
 export default function AboutUs() {
   return (
     <>
-      <Card sx={{ mt: 2, borderRadius: '48px' }}>
+      <Card sx={{ mt: 2,  borderBottomRightRadius: '48px', borderTopRightRadius: '48px', position: "absolute", 
+                 width: 1380, height: 80, left: -100, top: 110}}>
         <CardContent
           sx={{
             background: 'linear-gradient(180deg, #AFC139 0%, #5D7E17 100%);'
@@ -37,7 +38,8 @@ export default function AboutUs() {
             <Typography
               variant="h4"
               component="div"
-              align="center"
+              align="right"
+              paddingRight={50}
               sx={{
                 color: 'white',
                 textShadowColor: 'rgba(0, 0, 0, 0.25)',
@@ -49,7 +51,7 @@ export default function AboutUs() {
           </Box>
         </CardContent>
       </Card>
-      <Card sx={{ my: 5, borderRadius: '69px' }}>
+      <Card sx={{ mt: 20, borderRadius: '69px' }}>
         <CardContent
           sx={{
             background: 'linear-gradient(180deg, #55B0D5 0%, #1176AF 71.35%);'
@@ -89,7 +91,7 @@ export default function AboutUs() {
           </Box>
         </CardContent>
       </Card>
-      <Card sx={{ my: 5, borderRadius: '69px' }}>
+      <Card sx={{ mt: 2, borderRadius: '69px' }}>
         <CardContent
           sx={{
             background: 'linear-gradient(180deg, #FE5D97 33.85%, #FDAFC5 89.58%);'
