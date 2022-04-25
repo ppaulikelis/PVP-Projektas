@@ -2,6 +2,9 @@ import { Button, Card, CardContent, Typography } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Box } from '@mui/system';
 
 export default function Home() {
@@ -18,6 +21,7 @@ export default function Home() {
           </Box>
         </CardContent>
       </Card> */}
+     
       <Card sx={{ mt: 2, borderRadius: '48px' }}>
         <CardContent
           sx={{
@@ -65,10 +69,10 @@ export default function Home() {
                 variant="contained"
                 size="large"
                 color="secondary"
-                sx={{ color: 'white', mt: 5, p: 1 }}
-                endIcon={<PlayArrowIcon />}
+                sx={{ color: 'black', mt: 5, p: 1 }}
+                endIcon={<PlayArrowIcon/>}
                 onClick={() => navigate('gamecode')}>
-                <Typography variant="h5" component="div" align="center" sx={{ color: 'white' }}>
+                <Typography variant="h4" component="div" align="center" fontWeight= "bold" sx={{ color: 'black' }}>
                   Žaisti
                 </Typography>
               </Button>
@@ -80,8 +84,9 @@ export default function Home() {
               align="center"
               sx={{ color: 'white', fontSize: 20 }}>
               Nori licencijos? Prenumeruok jau dabar!
-            </Typography>
-            <br />
+              <br/>
+              <KeyboardArrowDownIcon sx={{ color: "white", fontSize: 40}}  onClick={() => window.scrollTo(999,999)} />
+            </Typography>     
             <br />
             <Typography
               variant="h3"
@@ -101,6 +106,14 @@ export default function Home() {
             <Typography variant="h4" component="div" align="center" sx={{ color: 'white' }}>
               Prenumeratą įsigyti galite susisiekę su mumis el. paštu: pvp.projektas@pvp.pvp arba
               telefonu: +37061111111
+            </Typography>
+            <Typography
+              variant="h3"
+              component="div"
+              align="center"
+              sx={{ color: 'white', fontSize: 20 }}>
+                <br/>
+            <KeyboardArrowUpIcon sx={{ color: "white", fontSize: 40}}  onClick={() => window.scrollTo(0,0)} />
             </Typography>
           </Box>
         </CardContent>
