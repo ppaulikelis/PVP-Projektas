@@ -3,6 +3,7 @@ import {
   Button,
   Card,
   CardContent,
+  CircularProgress,
   Container,
   Dialog,
   DialogActions,
@@ -37,10 +38,17 @@ export default function GameList() {
   const [gameDescription, setGameDescription] = useState('');
   const [refresh, setRefresh] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
+  const [loading, setLoading] = useState(false);
   const gamesCollectionRef = collection(db, 'games');
   const q = query(gamesCollectionRef, where('user', '==', user.uid));
 
+  const resetForm = () => {
+    setGameName('');
+    setGameDescription('');
+  };
+
   const handleGameSubmit = async () => {
+    setLoading(true);
     await addDoc(gamesCollectionRef, {
       user: user.uid,
       name: gameName,
@@ -48,6 +56,8 @@ export default function GameList() {
     });
     handleAddClose();
     setRefresh(refresh + 1);
+    resetForm();
+    setLoading(false);
   };
 
   const handleGameDelete = async () => {
@@ -172,9 +182,10 @@ export default function GameList() {
                             component="div"
                             align="left"
                             sx={{
-                              color: 'white'
+                              color: 'white',
+                              fontStyle: game.name ? 'normal' : 'italic'
                             }}>
-                            {game.name}
+                            {game.name ? game.name : 'be pavadinimo'}
                           </Typography>
                         </Box>
                         <Box
@@ -292,8 +303,9 @@ export default function GameList() {
               variant="contained"
               autoFocus
               sx={{ color: 'white' }}
-              onClick={handleGameSubmit}>
-              Pridėti
+              onClick={handleGameSubmit}
+              disabled={loading}>
+              {loading ? <CircularProgress color="secondary" /> : 'Pridėti'}
             </Button>
           </DialogActions>
         </Box>

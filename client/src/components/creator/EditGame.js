@@ -211,9 +211,18 @@ const QuestionForm = (props) => {
           background: '#55B0D5'
         }}>
         <Box px={2} pt={2} display="flex" flexDirection={'column'}>
-          <Typography component={'div'} variant={'h6'} color="#ffffff">
-            {id + 1}. Klausimas
-          </Typography>
+          <Box display={'flex'} flexDirection={'row'}>
+            <Box display={'flex'} flexGrow={1} alignItems={'center'} justifyContent={'left'}>
+              <Typography component={'div'} variant={'h6'} color="#ffffff">
+                {id + 1}. Klausimas
+              </Typography>
+            </Box>
+            <Box display={'flex'} flexGrow={1} alignItems={'center'} justifyContent={'right'}>
+              <IconButton onClick={() => handleDelete(id)} sx={{ color: 'red' }}>
+                <DeleteRoundedIcon sx={{ fontSize: 30 }} />
+              </IconButton>
+            </Box>
+          </Box>
           <TextField
             onChange={(event) => handleQuestionNameChange(id, event.target.value)}
             value={initialQuestionName}
@@ -221,7 +230,6 @@ const QuestionForm = (props) => {
             color="info"
             name="question"
             label="Klausimas"
-            fullWidth
             multiline
             rows={2}
             sx={{ mb: 2, mt: 2 }}
@@ -239,8 +247,7 @@ const QuestionForm = (props) => {
             color="info"
             name="answer"
             label="Atsakymas"
-            fullWidth
-            sx={{ mb: 1 }}
+            sx={{ mb: 2 }}
             InputLabelProps={{
               style: { color: 'white' }
             }}
@@ -248,11 +255,20 @@ const QuestionForm = (props) => {
               style: { color: 'white' }
             }}
           />
-          <Box display={'flex'} justifyContent={'right'}>
-            <IconButton onClick={() => handleDelete(id)} sx={{ color: 'red' }}>
-              <DeleteRoundedIcon sx={{ fontSize: 32 }} />
-            </IconButton>
-          </Box>
+          <TextField
+            focused
+            color="info"
+            name="value"
+            label="Klausimo vertė"
+            type="number"
+            sx={{ mb: 2 }}
+            InputLabelProps={{
+              style: { color: 'white' }
+            }}
+            InputProps={{
+              style: { color: 'white' }
+            }}
+          />
         </Box>
       </CardContent>
     </Card>
