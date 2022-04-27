@@ -156,20 +156,32 @@ const faq = [
 export default function Faq() {
   return (
     <>
-      <Card sx={{ mt: 2, borderRadius: '48px' }}>
+      <Card sx={{ mt: 2,  borderBottomRightRadius: '48px', borderTopRightRadius: '48px', position: "absolute", 
+                 width: 1380, height: 80, left: -100, top: 110}}>
         <CardContent
           sx={{
             background: 'linear-gradient(180deg, #AFC139 0%, #5D7E17 100%);'
           }}>
           <Box px={2}>
-            <Typography variant="h4" component="div" align="center" sx={{ color: 'white' }}>
+            <Typography 
+            variant="h4" 
+            component="div" 
+            align="right"
+            paddingRight={30}
+            sx={{ color: 'white'}}>
               Dažnai užduodami klausimai
             </Typography>
           </Box>
         </CardContent>
       </Card>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
       {faq.map((topic, index) => (
-        <Card sx={{ my: 5, borderRadius: '69px' }} key={topic.topic}>
+        <Card sx={{ mt: 2, borderRadius: '69px' }} key={topic.topic}>
           <CardContent
             sx={{
               background:
