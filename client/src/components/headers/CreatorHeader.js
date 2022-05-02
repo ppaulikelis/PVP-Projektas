@@ -8,7 +8,7 @@ import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 export default function CreatorHeader() {
   const navigate = useNavigate();
   return (
-    <Box px={4} sx={{ backgroundColor: 'rgba(67, 127, 151, 0.8)' }}>
+    <Box px={4} sx={{ backgroundColor: 'rgba(164, 164, 164, 0.8)' }}>
       <Box display="flex" alignItems="center" sx={{ minHeight: '64px' }}>
         <Button
           startIcon={<RemoveRedEyeRoundedIcon />}
