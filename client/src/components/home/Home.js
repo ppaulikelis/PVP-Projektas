@@ -64,7 +64,7 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <Card sx={{ mt: 40, borderRadius: '20px' }}>
+      <Card sx={{ mt: 40, borderRadius: '69px' }}>
         <CardContent
           sx={{
             background: 'linear-gradient(180deg, #55B0D5 0%, #1176AF 71.35%);'

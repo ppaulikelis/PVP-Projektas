@@ -26,7 +26,7 @@ export default function Subscription() {
       </Box>
     </CardContent>
   </Card>
-  <Card sx={{ my: 20, borderRadius: '20px' }}>
+  <Card sx={{ my: 20, borderRadius: '69px' }}>
     <CardContent
       sx={{
         background: 'linear-gradient(180deg, #55B0D5 0%, #1176AF 71.35%);'
