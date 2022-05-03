@@ -1,4 +1,3 @@
-import { Container } from '@mui/material';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Background from '../additional/Background';
@@ -20,23 +19,21 @@ export default function HomeDashboard() {
   return (
     <Background>
       <MainHeader />
-      <Container maxWidth="md" sx={{ pb: 5 }}>
-        <Routes>
-          <Route path="" element={<Home />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/reviews" element={<Reviews />} />
-          <Route path="/gamecode" element={<GameCode />} />
-          <Route path="/contacts" element={<Contacts />} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/subscription" element={<Subscription />} />
-          {!user && (
-            <>
-              <Route path="/signin" element={<SignIn />} />
-              <Route path="/signup" element={<SignUp />} />
-            </>
-          )}
-        </Routes>
-      </Container>
+      <Routes>
+        <Route path="" element={<Home />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/reviews" element={<Reviews />} />
+        <Route path="/gamecode" element={<GameCode />} />
+        <Route path="/contacts" element={<Contacts />} />
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/subscription" element={<Subscription />} />
+        {!user && (
+          <>
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
+          </>
+        )}
+      </Routes>
     </Background>
   );
 }

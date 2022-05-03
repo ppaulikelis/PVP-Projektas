@@ -13,9 +13,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import CircularProgress from '@mui/material/CircularProgress';
 import CreatorHeader from './CreatorHeader';
-import MenuIcon from "@mui/icons-material/Menu";
-import Tooltip from "@mui/material/Tooltip";
-import Container from "@mui/material/Container";
+import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
 
 const pages = [
   {
@@ -86,13 +85,13 @@ const MainHeader = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-  
+
   return (
     <>
       <AppBar position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Box  //logo ir pav - big
+            <Box //logo ir pav - big
               sx={{
                 display: { xs: 'none', md: 'flex' },
                 flex: 0,
@@ -116,7 +115,7 @@ const MainHeader = () => {
             <Box // menu items - big
               sx={{
                 //width: '65%',
-                flexGrow: 1, 
+                flexGrow: 1,
                 display: { xs: 'none', md: 'flex' },
                 flex: 3,
                 justifyContent: 'center',
@@ -135,51 +134,49 @@ const MainHeader = () => {
                 </Button>
               ))}
             </Box>
-            <Box  // menu items -small
-              sx={{ 
-                flexGrow: 1, 
-                display: { xs: 'flex', md: 'none' } 
-                }}>
+            <Box // menu items -small
+              sx={{
+                flexGrow: 1,
+                display: { xs: 'flex', md: 'none' }
+              }}>
               <IconButton
                 size="large"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleOpenNavMenu}
-                color="inherit"
-              >
+                color="inherit">
                 <MenuIcon />
               </IconButton>
               <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left"
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left"
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" }
-              }}
-              >
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left'
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left'
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: 'block', md: 'none' }
+                }}>
                 {pages.map((page) => (
-                  <MenuItem 
-                  key={page.name}
-                  onClick={() => {
-                    navigate(page.url);
-                  }}>
-                  <Typography textAlign="center">{page.name}</Typography>
+                  <MenuItem
+                    key={page.name}
+                    onClick={() => {
+                      navigate(page.url);
+                    }}>
+                    <Typography textAlign="center">{page.name}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
             </Box>
-            <Box  //logo ir pav - small
+            <Box //logo ir pav - small
               sx={{
                 display: { xs: 'flex', md: 'none' },
                 flex: 4,
@@ -200,7 +197,7 @@ const MainHeader = () => {
                 </Link>
               </Typography>
             </Box>
-            <Box  //user account item
+            <Box //user account item
               sx={{
                 display: 'flex',
                 flex: 1,
@@ -234,7 +231,9 @@ const MainHeader = () => {
                     }}
                     open={Boolean(anchorEl)}
                     onClose={handleClose}>
-                    <MenuItem sx={{ justifyContent: 'center' }} onClick={() => navigate('/creator')}>
+                    <MenuItem
+                      sx={{ justifyContent: 'center' }}
+                      onClick={() => navigate('/creator')}>
                       Skydelis
                     </MenuItem>
                     <MenuItem disabled={loading} onClick={() => handleLogout()}>

@@ -2,13 +2,14 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Card,
-  CardContent,
+  Container,
   Typography
 } from '@mui/material';
 import React from 'react';
 import { Box } from '@mui/system';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { CustomCard } from '../additional/CustomCard';
+import { LeftPageTitle } from '../additional/PageTitle';
 
 const faq = [
   {
@@ -156,40 +157,17 @@ const faq = [
 export default function Faq() {
   return (
     <>
-      <Card sx={{ mt: 2,  borderBottomRightRadius: '48px', borderTopRightRadius: '48px', position: "absolute", 
-                 width: 1380, height: 80, left: -100, top: 110}}>
-        <CardContent
-          sx={{
-            background: 'linear-gradient(180deg, #AFC139 0%, #5D7E17 100%);'
-          }}>
-          <Box px={2}>
-            <Typography 
-            variant="h4" 
-            component="div" 
-            align="right"
-            paddingRight={30}
-            sx={{ color: 'white'}}>
-              Dažnai užduodami klausimai
-            </Typography>
-          </Box>
-        </CardContent>
-      </Card>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      {faq.map((topic, index) => (
-        <Card sx={{ mt: 2, borderRadius: '69px' }} key={topic.topic}>
-          <CardContent
-            sx={{
-              background:
-                index % 2 === 0
-                  ? 'linear-gradient(180deg, #55B0D5 0%, #1176AF 71.35%)'
-                  : 'linear-gradient(180deg, #FE5D97 33.85%, #FDAFC5 89.58%)'
-            }}>
-            <Box py={2} px={2} display="flex" flexDirection="column">
+      <LeftPageTitle>Dažnai užduodami klausimai</LeftPageTitle>
+      <Container maxWidth="md" sx={{ pb: 5 }}>
+        {faq.map((topic, index) => (
+          <CustomCard
+            key={index}
+            background={
+              index % 2 === 0
+                ? 'linear-gradient(180deg, #55B0D5 0%, #1176AF 71.35%)'
+                : 'linear-gradient(180deg, #FE5D97 33.85%, #FDAFC5 89.58%)'
+            }>
+            <Box display="flex" flexDirection="column">
               <Typography variant="h4" component="div" align="center" sx={{ color: 'white' }}>
                 {topic.topic}
               </Typography>
@@ -214,9 +192,9 @@ export default function Faq() {
                 </Accordion>
               ))}
             </Box>
-          </CardContent>
-        </Card>
-      ))}
+          </CustomCard>
+        ))}
+      </Container>
     </>
   );
 }

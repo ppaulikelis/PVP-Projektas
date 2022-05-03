@@ -1,35 +1,17 @@
-import { Card, CardContent, Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import React from 'react';
 import { Box } from '@mui/system';
 import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
+import { CustomCard } from '../additional/CustomCard';
+import { LeftPageTitle } from '../additional/PageTitle';
 
 export default function Contacts() {
   return (
     <>
-      <Card sx={{mt: 2,  borderBottomRightRadius: '48px', borderTopRightRadius: '48px', position: "absolute", 
-                 width: 1380, height: 80, left: -100, top: 110}}>
-        <CardContent
-          sx={{
-            background: 'linear-gradient(180deg, #AFC139 0%, #5D7E17 100%);'
-          }}>
-          <Box px={2}>
-            <Typography 
-            variant="h4" 
-            component="div" 
-            align="right"
-            paddingRight={40} 
-            sx={{ color: 'white' }}>
-              Susisiekite su mumis
-            </Typography>
-          </Box>
-        </CardContent>
-      </Card>
-      <Card sx={{ mt: 20, borderRadius: '20px' }}>
-        <CardContent
-          sx={{
-            background: 'linear-gradient(180deg, #55B0D5 0%, #1176AF 71.35%);'
-          }}>
-          <Box py={2} px={2} display="flex">
+      <LeftPageTitle>Susisiekite su mumis</LeftPageTitle>
+      <Container maxWidth="md" sx={{ pb: 5 }}>
+        <CustomCard>
+          <Box display="flex">
             <Box
               sx={{
                 display: 'flex',
@@ -63,8 +45,8 @@ export default function Contacts() {
               </Typography>
             </Box>
           </Box>
-        </CardContent>
-      </Card>
+        </CustomCard>
+      </Container>
     </>
   );
 }

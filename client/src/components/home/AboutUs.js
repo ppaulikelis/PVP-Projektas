@@ -1,6 +1,8 @@
-import { Avatar, Card, CardContent, Typography } from '@mui/material';
+import { Avatar, Container, Typography } from '@mui/material';
 import React from 'react';
 import { Box } from '@mui/system';
+import { LeftPageTitle } from '../additional/PageTitle';
+import { CustomCard } from '../additional/CustomCard';
 
 const employees = [
   {
@@ -28,35 +30,12 @@ const employees = [
 export default function AboutUs() {
   return (
     <>
-      <Card sx={{ mt: 2,  borderBottomRightRadius: '48px', borderTopRightRadius: '48px', position: "absolute", 
-                 width: 1380, height: 80, left: -100, top: 110}}>
-        <CardContent
-          sx={{
-            background: 'linear-gradient(180deg, #AFC139 0%, #5D7E17 100%);'
-          }}>
-          <Box px={2}>
-            <Typography
-              variant="h4"
-              component="div"
-              align="right"
-              paddingRight={50}
-              sx={{
-                color: 'white',
-                textShadowColor: 'rgba(0, 0, 0, 0.25)',
-                textShadowOffset: { width: 0, height: 4 },
-                textShadowRadius: 4
-              }}>
-              Apie mus
-            </Typography>
-          </Box>
-        </CardContent>
-      </Card>
-      <Card sx={{ mt: 20, borderRadius: '69px' }}>
-        <CardContent
-          sx={{
-            background: 'linear-gradient(180deg, #55B0D5 0%, #1176AF 71.35%);'
-          }}>
-          <Box py={2} px={2} display="flex">
+      {/* Page Header, copy as example */}
+      <LeftPageTitle>Apie mus</LeftPageTitle>
+      {/* Page Header, copy as example */}
+      <Container maxWidth="md" sx={{ pb: 5 }}>
+        <CustomCard>
+          <Box display="flex">
             <Box
               sx={{
                 display: 'flex',
@@ -89,14 +68,9 @@ export default function AboutUs() {
               </Typography>
             </Box>
           </Box>
-        </CardContent>
-      </Card>
-      <Card sx={{ mt: 2, borderRadius: '69px' }}>
-        <CardContent
-          sx={{
-            background: 'linear-gradient(180deg, #FE5D97 33.85%, #FDAFC5 89.58%);'
-          }}>
-          <Box py={2} px={2} display="flex" flexDirection="column">
+        </CustomCard>
+        <CustomCard background="linear-gradient(180deg, #FE5D97 33.85%, #FDAFC5 89.58%);">
+          <Box display="flex" flexDirection="column">
             <Typography variant="h4" component="div" align="center" sx={{ color: 'white' }}>
               ORIS komanda
             </Typography>
@@ -124,8 +98,8 @@ export default function AboutUs() {
               ))}
             </Box>
           </Box>
-        </CardContent>
-      </Card>
+        </CustomCard>
+      </Container>
     </>
   );
 }
