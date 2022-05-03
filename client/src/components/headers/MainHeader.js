@@ -88,7 +88,7 @@ const MainHeader = () => {
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="static" sx={{ bgcolor: 'white' }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Box //logo ir pav - big
@@ -104,10 +104,10 @@ const MainHeader = () => {
                   height: 42,
                   width: 59
                 }}
-                src="/logo_white.png"
+                src="/logo_komposas2.png"
               />
               <Typography variant="h5" noWrap component="div">
-                <Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="/home">
+                <Link style={{ color: 'rgba(67, 127, 151, 1)', fontWeight: 600, textDecoration: 'inherit' }} to="/home">
                   ORIS
                 </Link>
               </Typography>
@@ -126,7 +126,7 @@ const MainHeader = () => {
                   variant={page.important ? 'contained' : 'text'}
                   {...(page.important ? { color: 'secondary' } : {})}
                   key={page.name}
-                  sx={{ color: 'white', mx: 1 }}
+                  sx={{ color: 'rgba(67, 127, 151, 1)', mx: 1, fontWeight: 600 }}
                   onClick={() => {
                     navigate(page.url);
                   }}>
@@ -189,10 +189,10 @@ const MainHeader = () => {
                   height: 42,
                   width: 59
                 }}
-                src="/logo_white.png"
+                src="/logo_komposas2.png"
               />
               <Typography variant="h5" noWrap component="div">
-                <Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="/home">
+                <Link style={{ color: 'rgba(67, 127, 151, 1)', fontWeight: 600, textDecoration: 'inherit' }} to="/home">
                   ORIS
                 </Link>
               </Typography>
@@ -207,7 +207,7 @@ const MainHeader = () => {
               }}>
               {user ? (
                 <React.Fragment>
-                  <Typography>{user.email}</Typography>
+                  <Typography color='black' fontWeight={600}>{user.email}</Typography>
                   <IconButton
                     size="large"
                     aria-label="account of current user"
@@ -245,7 +245,7 @@ const MainHeader = () => {
                 <Button
                   variant="contained"
                   color="secondary"
-                  sx={{ color: 'white' }}
+                  sx={{ color: 'white', fontWeight: 600 }}
                   onClick={() => navigate('signin')}
                   endIcon={<LoginOutlinedIcon />}>
                   Prisijungti

@@ -16,6 +16,7 @@ export default function GameCode() {
             flexDirection: 'column',
             alignItems: 'center'
           }}>
+          <img alt={'logo'} src={'/logo_be_fono.png'} width={'400px'} />
           <Typography textAlign="center" variant="h4" component="div" sx={{ mb: 2 }}>
             ORIS
           </Typography>
