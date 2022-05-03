@@ -15,19 +15,18 @@ export default function GameCode() {
     });
   };
 
+
   return (
     <Container maxWidth="sm">
-      <Card sx={{ mt: 2, borderRadius: '20px' }}>
-        <CardContent sx={{ my: 5, mx: 5 }}>
+      <Card  sx={{ mt: 2, borderRadius: '69px'}}>
+        <CardContent sx={{ my: 5, mx: 5,  }}>
           <Box
             sx={{
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center'
             }}>
-            <Typography textAlign="center" variant="h4" component="div" sx={{ mb: 2 }}>
-              ORIS
-            </Typography>
+            <img alt={'logo'} src={'/logo_be_fono.png'} width={'400px'} />
             <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
