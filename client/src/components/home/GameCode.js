@@ -2,7 +2,6 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { CustomCard } from '../additional/CustomCard';
 
@@ -17,9 +16,6 @@ export default function GameCode() {
             alignItems: 'center'
           }}>
           <img alt={'logo'} src={'/logo_be_fono.png'} width={'400px'} />
-          <Typography textAlign="center" variant="h4" component="div" sx={{ mb: 2 }}>
-            ORIS
-          </Typography>
           <TextField
             margin="normal"
             fullWidth

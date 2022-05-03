@@ -107,7 +107,13 @@ const MainHeader = () => {
                 src="/logo_komposas2.png"
               />
               <Typography variant="h5" noWrap component="div">
-                <Link style={{ color: 'rgba(67, 127, 151, 1)', fontWeight: 600, textDecoration: 'inherit' }} to="/home">
+                <Link
+                  style={{
+                    color: 'rgba(67, 127, 151, 1)',
+                    fontWeight: 600,
+                    textDecoration: 'inherit'
+                  }}
+                  to="/home">
                   ORIS
                 </Link>
               </Typography>
@@ -192,7 +198,13 @@ const MainHeader = () => {
                 src="/logo_komposas2.png"
               />
               <Typography variant="h5" noWrap component="div">
-                <Link style={{ color: 'rgba(67, 127, 151, 1)', fontWeight: 600, textDecoration: 'inherit' }} to="/home">
+                <Link
+                  style={{
+                    color: 'rgba(67, 127, 151, 1)',
+                    fontWeight: 600,
+                    textDecoration: 'inherit'
+                  }}
+                  to="/home">
                   ORIS
                 </Link>
               </Typography>
@@ -207,7 +219,9 @@ const MainHeader = () => {
               }}>
               {user ? (
                 <React.Fragment>
-                  <Typography color='black' fontWeight={600}>{user.email}</Typography>
+                  <Typography color="black" fontWeight={600}>
+                    {user.email}
+                  </Typography>
                   <IconButton
                     size="large"
                     aria-label="account of current user"
