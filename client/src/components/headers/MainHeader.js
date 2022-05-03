@@ -132,7 +132,11 @@ const MainHeader = () => {
                   variant={page.important ? 'contained' : 'text'}
                   {...(page.important ? { color: 'secondary' } : {})}
                   key={page.name}
-                  sx={{ color: 'rgba(67, 127, 151, 1)', mx: 1, fontWeight: 600 }}
+                  sx={{
+                    color: page.important ? 'white' : 'rgba(67, 127, 151, 1)',
+                    mx: 1,
+                    fontWeight: 600
+                  }}
                   onClick={() => {
                     navigate(page.url);
                   }}>
