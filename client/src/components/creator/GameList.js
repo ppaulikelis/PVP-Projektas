@@ -25,7 +25,6 @@ import { useAuthContext } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { CustomCard } from '../additional/CustomCard';
 import { LeftPageTitle } from '../additional/PageTitle';
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
 export default function GameList() {
   const navigate = useNavigate();
@@ -174,7 +173,9 @@ export default function GameList() {
                         sx={{ color: '#eb7e09' }}>
                         <EditIcon sx={{ fontSize: 32 }} />
                       </IconButton>
-                      <IconButton sx={{ color: '#e00000' }} onClick={() => handleDeleteOpen(game.id)}>
+                      <IconButton
+                        sx={{ color: '#e00000' }}
+                        onClick={() => handleDeleteOpen(game.id)}>
                         <DeleteRoundedIcon sx={{ fontSize: 32 }} />
                       </IconButton>
                     </Box>
@@ -183,7 +184,6 @@ export default function GameList() {
               ))}
             {games.length === 0 && (
               <Box display="flex" flexDirection={'column'} alignItems="center">
-                
                 <img src="/logo_white.png" width={'450px'} />
                 <Typography component={'div'} variant="h5" color="#ffffff">
                   Orientacinių nėra

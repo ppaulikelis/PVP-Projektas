@@ -18,18 +18,18 @@ export default function CreatorDashboard() {
 
   return (
     <>
-    <Background2>
-      <MainHeader />
-      <Routes>
-        {user ? (
-          <>
-            <Route path="" element={<GameList />} />{' '}
-            <Route path="/game/:id" element={<EditGame />} />
-          </>
-        ) : (
-          <></>
-        )}
-      </Routes>
+      <Background2>
+        <MainHeader />
+        <Routes>
+          {user ? (
+            <>
+              <Route path="" element={<GameList />} />{' '}
+              <Route path="/game/:id" element={<EditGame />} />
+            </>
+          ) : (
+            <></>
+          )}
+        </Routes>
       </Background2>
     </>
   );
