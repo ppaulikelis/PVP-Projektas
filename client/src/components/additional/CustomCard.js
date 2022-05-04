@@ -3,7 +3,7 @@ import React from 'react';
 
 export const CustomCard = (props) => {
   return (
-    <Card sx={{ mt: 2, borderRadius: '35px' }}>
+    <Card sx={{ mt: 2, borderRadius: '69px' }}>
       <CardContent
         sx={{
           background: props.background

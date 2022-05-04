@@ -4,6 +4,7 @@ import { useAuthContext } from '../../contexts/AuthContext';
 import MainHeader from '../headers/MainHeader';
 import EditGame from './EditGame';
 import GameList from './GameList';
+import Background2 from '../additional/Background2';
 
 export default function CreatorDashboard() {
   const { user } = useAuthContext();
@@ -17,6 +18,7 @@ export default function CreatorDashboard() {
 
   return (
     <>
+    <Background2>
       <MainHeader />
       <Routes>
         {user ? (
@@ -28,6 +30,7 @@ export default function CreatorDashboard() {
           <></>
         )}
       </Routes>
+      </Background2>
     </>
   );
 }

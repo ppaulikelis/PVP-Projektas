@@ -15,7 +15,7 @@ export default function Home() {
     <>
       {/* Page MAIN Header, DON'T COPY as example */}
       <MainLeftPageTitle>
-        Edukacinių orientacinių varžybų ruošimas tau ir tavo mokyklai
+        Edukacinių orientacinių varžybų ruošimas TAU ir TAVO MOKYKLAI
       </MainLeftPageTitle>
       <MainRightPageTitle>
         Jau pats laikas TAVO mokyklai išbandyti edukacinių - orientacinių varžybų kūrimo ir žaidimo
@@ -53,7 +53,6 @@ export default function Home() {
               </Typography>
             </Button>
           </Box>
-          <br />
           <br />
           <Typography
             variant="h3"

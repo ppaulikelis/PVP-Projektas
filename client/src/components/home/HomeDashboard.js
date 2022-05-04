@@ -12,6 +12,7 @@ import Subscription from './Subscription';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import { useAuthContext } from '../../contexts/AuthContext';
+import Background2 from '../additional/Background2';
 
 export default function HomeDashboard() {
   const { user } = useAuthContext();

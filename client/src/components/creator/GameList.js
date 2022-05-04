@@ -25,6 +25,7 @@ import { useAuthContext } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { CustomCard } from '../additional/CustomCard';
 import { LeftPageTitle } from '../additional/PageTitle';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
 export default function GameList() {
   const navigate = useNavigate();
@@ -98,7 +99,7 @@ export default function GameList() {
 
   return (
     <>
-      <LeftPageTitle>Orientacinės</LeftPageTitle>
+      <LeftPageTitle>Orientacinės varžybos</LeftPageTitle>
       <Container maxWidth="lg" sx={{ pb: 5 }}>
         <CustomCard>
           <TextField
@@ -165,15 +166,15 @@ export default function GameList() {
                         justifyContent: 'right',
                         alignItems: 'center'
                       }}>
-                      <IconButton sx={{ color: 'mediumSpringGreen' }}>
+                      <IconButton sx={{ color: ' #517300' }}>
                         <PlayCircleFilledRoundedIcon sx={{ fontSize: 32 }} />
                       </IconButton>
                       <IconButton
                         onClick={() => navigate('game/' + game.id)}
-                        sx={{ color: '#FFB30F' }}>
+                        sx={{ color: '#eb7e09' }}>
                         <EditIcon sx={{ fontSize: 32 }} />
                       </IconButton>
-                      <IconButton sx={{ color: 'red' }} onClick={() => handleDeleteOpen(game.id)}>
+                      <IconButton sx={{ color: '#e00000' }} onClick={() => handleDeleteOpen(game.id)}>
                         <DeleteRoundedIcon sx={{ fontSize: 32 }} />
                       </IconButton>
                     </Box>
@@ -182,6 +183,7 @@ export default function GameList() {
               ))}
             {games.length === 0 && (
               <Box display="flex" flexDirection={'column'} alignItems="center">
+                
                 <img src="/logo_white.png" width={'450px'} />
                 <Typography component={'div'} variant="h5" color="#ffffff">
                   Orientacinių nėra
@@ -217,7 +219,7 @@ export default function GameList() {
         <Box p={1}>
           <DialogTitle>
             <Typography variant="h5" component="div" align="center">
-              Ar tikrai norite pašalinti orientacinių įrašą?
+              Ar tikrai norite pašalinti orientacinių varžybų įrašą?
             </Typography>
           </DialogTitle>
           <DialogActions>
@@ -234,7 +236,7 @@ export default function GameList() {
         <Box p={1}>
           <DialogTitle>
             <Typography variant="h5" component="div" align="center">
-              Naujos orientacinės
+              Naujos orientacinės varžybos
             </Typography>
           </DialogTitle>
           <DialogContent>

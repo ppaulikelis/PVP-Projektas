@@ -79,7 +79,7 @@ export default function EditGame() {
 
   return (
     <>
-      <LeftPageTitle>Orientacinių redagavimas</LeftPageTitle>
+      <LeftPageTitle>Orientacinių varžybų redagavimas</LeftPageTitle>
       <Container maxWidth="lg" sx={{ pb: 5 }}>
         <CustomCard>
           <TextField
@@ -120,6 +120,13 @@ export default function EditGame() {
               style: { color: 'white' }
             }}
           />
+
+          <Box display="flex" flexDirection={'column'} alignItems="center">
+            <Typography component={'div'} variant="h7" color="#ffffff">
+              Sukurkite klausimus orientacinėms varžyboms spausdami + mygtuką ekrano dešinėje
+            </Typography>
+          </Box>
+
           {questions.map((question) => (
             <QuestionForm
               key={question.id}
@@ -131,6 +138,14 @@ export default function EditGame() {
               initialQuestionAnswer={question.answer}
             />
           ))}
+
+          <Box display="flex" flexDirection={'column'} alignItems="center">
+            <br/>
+            <Typography component={'div'} variant="h7" color="#ffffff">
+              Norėdami išsaugoti pakeitimus nepamirškite paspausti žalio mygtuko ekrano dešinėje
+            </Typography>
+          </Box>
+
         </CustomCard>
         <IconButton
           onClick={handleSumbit}
@@ -138,10 +153,10 @@ export default function EditGame() {
             position: 'fixed',
             right: 40,
             bottom: 135,
-            backgroundColor: 'mediumSpringGreen',
+            backgroundColor: '#517300',
             '&:hover': {
               filter: 'brightness(85%)',
-              backgroundColor: 'mediumSpringGreen'
+              backgroundColor: '#517300'
             },
             height: '75px',
             width: '75px'
@@ -189,7 +204,7 @@ const QuestionForm = (props) => {
             </Typography>
           </Box>
           <Box display={'flex'} flexGrow={1} alignItems={'center'} justifyContent={'right'}>
-            <IconButton onClick={() => handleDelete(id)} sx={{ color: 'red' }}>
+            <IconButton onClick={() => handleDelete(id)} sx={{ color: '#e00000' }}>
               <DeleteRoundedIcon sx={{ fontSize: 30 }} />
             </IconButton>
           </Box>
