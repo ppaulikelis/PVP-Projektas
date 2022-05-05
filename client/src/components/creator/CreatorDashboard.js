@@ -4,6 +4,7 @@ import { useAuthContext } from '../../contexts/AuthContext';
 import MainHeader from '../headers/MainHeader';
 import EditGame from './EditGame';
 import GameList from './GameList';
+import Profile from './Profile';
 import Background2 from '../additional/Background2';
 
 export default function CreatorDashboard() {
@@ -25,6 +26,7 @@ export default function CreatorDashboard() {
             <>
               <Route path="" element={<GameList />} />{' '}
               <Route path="/game/:id" element={<EditGame />} />
+              <Route path="/profile" element={<Profile />} />
             </>
           ) : (
             <></>
