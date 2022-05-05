@@ -35,11 +35,20 @@ export default function EditGame() {
       setGameDescription(game.description);
       if (game.questions) {
         setQuestions(game.questions);
-        console.log(game.questions);
       }
     };
     getGame();
   }, []);
+
+  const handleSumbit = async () => {
+    const gameDoc = doc(db, 'games', id);
+    const newFields = {
+      name: gameName,
+      description: gameDescription,
+      questions: questions
+    };
+    await updateDoc(gameDoc, newFields);
+  };
 
   const handleAddQuestion = () => {
     const newQuestion = {
@@ -124,16 +133,6 @@ export default function EditGame() {
     setQuestions(copy);
   };
 
-  const handleSumbit = async () => {
-    const gameDoc = doc(db, 'games', id);
-    const newFields = {
-      name: gameName,
-      description: gameDescription,
-      questions: questions
-    };
-    await updateDoc(gameDoc, newFields);
-  };
-
   async function createPDF() {
     try {
       var doc = new jsPDF();
@@ -165,7 +164,7 @@ export default function EditGame() {
         }
       }
       if (count > 0) {
-        doc.save('demo.pdf');
+        doc.save(gameName + '.pdf');
       }
     } catch (error) {
       console.log(error);
