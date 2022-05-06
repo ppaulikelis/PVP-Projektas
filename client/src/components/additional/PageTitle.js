@@ -15,7 +15,7 @@ export const MainLeftPageTitle = (props) => {
           background: props.background
         }}>
         <Box py={1} px={2}>
-          <Typography variant="h3" component="div" align="left" sx={{ color: 'white' }}>
+          <Typography variant="h4" component="div" align="left" sx={{ color: 'white' }}>
             {props.children}
           </Typography>
         </Box>
@@ -29,6 +29,7 @@ export const MainRightPageTitle = (props) => {
     <Card
       sx={{
         mt: 2,
+        mb: 13,
         borderBottomLeftRadius: '48px',
         borderTopLeftRadius: '48px',
         ml: { md: 'calc(calc(calc(100% - 900px) / 2) + 20px)', xs: '20px' }
@@ -38,7 +39,7 @@ export const MainRightPageTitle = (props) => {
           background: props.background
         }}>
         <Box py={1} px={2}>
-          <Typography variant="h4" component="div" align="right" sx={{ color: 'white' }}>
+          <Typography variant="h5" component="div" align="right" sx={{ color: 'white' }}>
             {props.children}
           </Typography>
         </Box>
