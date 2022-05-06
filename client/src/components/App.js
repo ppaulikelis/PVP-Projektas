@@ -4,6 +4,7 @@ import { AuthProvider } from '../contexts/AuthContext';
 import HomeDashboard from './home/HomeDashboard';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import CreatorDashboard from './creator/CreatorDashboard';
+import GameDashboard from './game/GameDashboard';
 
 const theme = createTheme({
   palette: {
@@ -38,6 +39,7 @@ function App() {
             <Route exact path="" element={<Navigate to="/home" />} />
             <Route path="/home/*" element={<HomeDashboard />} />
             <Route path="/creator/*" element={<CreatorDashboard />} />
+            <Route path="/game/*" element={<GameDashboard />} />
           </Routes>
         </Router>
       </ThemeProvider>
