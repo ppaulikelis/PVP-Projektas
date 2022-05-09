@@ -170,7 +170,7 @@ export default function GameList() {
                       </IconButton>
                       <IconButton
                         onClick={() => navigate('game/' + game.id)}
-                        sx={{ color: '#eb7e09' }}>
+                        sx={{ color: '#FFB30F' }}>
                         <EditIcon sx={{ fontSize: 32 }} />
                       </IconButton>
                       <IconButton

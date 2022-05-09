@@ -22,7 +22,7 @@ export default function Home() {
         platformą. Nesnausk, užsisakyk jau šiandien!
       </MainRightPageTitle>
       {/* Page MAIN Header, DON'T COPY as example */}
-      <Container maxWidth="md" sx={{ pb: 5 }}>
+      <Container maxWidth="lg" sx={{ pb: 5 }}>
         <CustomCard>
           <Typography
             variant="h3"
@@ -36,11 +36,10 @@ export default function Home() {
           </Typography>
           <Box textAlign="center">
             <Button
-              fullWidth
               variant="contained"
               size="large"
               color="secondary"
-              sx={{ color: 'black', mt: 5, p: 1 }}
+              sx={{ color: 'black', mt: 3, p: 2, pl: 9, pr: 9 }}
               endIcon={<PlayArrowIcon />}
               onClick={() => navigate('gamecode')}>
               <Typography
