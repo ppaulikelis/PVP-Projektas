@@ -43,7 +43,7 @@ export default function AboutUs() {
                 justifyContent: 'center',
                 alignItems: 'center'
               }}>
-              <img alt={'logo'} src={'/logo_white.png'} width={'400px'} />
+              <img alt={'logo'} src={'/logo_white.png'} width={'300px'} />
             </Box>
             <Box
               sx={{
