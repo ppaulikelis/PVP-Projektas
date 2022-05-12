@@ -145,7 +145,7 @@ export default function EditGame() {
           }
           const result = await QRCode.toDataURL(question.key);
           doc.addImage(result, 'png', 20, 100, 175, 175);
-          doc.addImage('/logo_be_fono.png', 5, 10, 59, 42);
+          doc.addImage('/logo_be_fono.png', 5, 5, 50, 50);
           doc.setFontSize(25);
           if (question.hint.length > 0) {
             question.hint.match(/.{1,40}/g).forEach((row, index) => {
