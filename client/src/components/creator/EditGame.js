@@ -79,7 +79,6 @@ export default function EditGame() {
     };
     copy[id] = question;
     setQuestions(copy);
-    console.log(questions);
   };
 
   const handleQuestionAnswerChange = (id, value) => {

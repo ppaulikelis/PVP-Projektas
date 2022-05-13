@@ -4,24 +4,20 @@ import React from 'react';
 import { CustomCard } from '../additional/CustomCard';
 import { LeftPageTitle } from '../additional/PageTitle';
 
-export default function Lobby() {
+export default function Lobby(props) {
+  const { startedGame, game } = props;
+
   return (
     <>
-      <LeftPageTitle>Pavadinimas</LeftPageTitle>
+      <LeftPageTitle>{game.name}</LeftPageTitle>
       <Container maxWidth="md">
         <CustomCard>
           <Typography variant="p" component="div" color="white">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-            has been the industrys standard dummy text ever since the 1500s, when an unknown printer
-            took a galley of type and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting, remaining
-            essentially unchanged. It was popularised in the 1960s with the release of Letraset
-            sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-            software like Aldus PageMaker including versions of Lorem Ipsum.
+            {game.description}
           </Typography>
           <br />
           <Typography variant="p" component="div" color="white">
-            Žaidimo laikas: 2022-05-06, 15:30 - 17:00
+            Žaidimo laikas: {startedGame.startDateTime} / {startedGame.endDateTime}
           </Typography>
           <br />
           <TextField
