@@ -25,6 +25,7 @@ import { useAuthContext } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { CustomCard } from '../additional/CustomCard';
 import { LeftPageTitle } from '../additional/PageTitle';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 export default function GameList() {
   const navigate = useNavigate();
   const { user } = useAuthContext();
@@ -34,6 +35,7 @@ export default function GameList() {
   const [openAdd, setOpenAdd] = useState(false);
   const [openStart, setOpenStart] = useState(false);
   const [games, setGames] = useState([{}]);
+  const [startedGames, setStartedGames] = useState([{}]);
   const [gameName, setGameName] = useState('');
   const [gameDateStart, setGameDateStart] = useState('');
   const [gameDateEnd, setGameDateEnd] = useState('');
@@ -44,7 +46,7 @@ export default function GameList() {
   const gamesCollectionRef = collection(db, 'games');
   const startedGamesCollectionRef = collection(db, 'startedGames');
   const q = query(gamesCollectionRef, where('user', '==', user.uid));
-  //const q1 = query(startedGamesCollectionRef, where('user', '==', user.uid));
+  const q1 = query(startedGamesCollectionRef, where('user', '==', user.uid));
 
   const resetForms = () => {
     setGameName('');
@@ -90,11 +92,12 @@ export default function GameList() {
       const data = await getDocs(q);
       setGames(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
-    // const getStartedGames = async () => {
-    //   const data = await getDocs(q1);
-
-    // };
+    const getStartedGames = async () => {
+      const data = await getDocs(q1);
+      setStartedGames(data.docs.map((doc) => ({ id: doc.id })));
+    };
     getGames();
+    getStartedGames();
   }, [refresh]);
 
   const handleDeleteOpen = (id) => {
@@ -235,6 +238,38 @@ export default function GameList() {
           </TabPanel>
           <TabPanel value={tab} index={1}>
             <br />
+            {startedGames.map((startedGame) => (
+              <CustomCard key={startedGame.id} background={'#55B0D5'}>
+                <Box display="flex">
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flex: '1',
+                      justifyContent: 'left',
+                      alignItems: 'center'
+                    }}>
+                    <Typography variant="h5" component="div" align="left" color="#ffffff">
+                      {startedGame.id}
+                    </Typography>
+                  </Box>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flex: '1',
+                      justifyContent: 'right',
+                      alignItems: 'center'
+                    }}>
+                    <Button
+                      variant="contained"
+                      color="success"
+                      sx={{ ml: '10px', borderRadius: '69px' }}
+                      onClick={() => navigator.clipboard.writeText(startedGame.id)}>
+                      <ContentCopyIcon />
+                    </Button>
+                  </Box>
+                </Box>
+              </CustomCard>
+            ))}
           </TabPanel>
         </CustomCard>
       </Container>
