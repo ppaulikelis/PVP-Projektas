@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Accordion,
   AccordionDetails,
@@ -17,32 +17,52 @@ import { LeftPageTitle } from '../additional/PageTitle';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import QrCodeScannerRoundedIcon from '@mui/icons-material/QrCodeScannerRounded';
 import { QrReader } from 'react-qr-reader';
+import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
+import { db } from '../../firebase';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 export default function Game(props) {
-  const { game } = props;
+  const { user } = useAuthContext();
+  const { startedGame, game } = props;
   const [submission, setSubmission] = useState({});
   const [unlocks, setUnlocks] = useState([]);
 
   useEffect(() => {
+    const emptyAnswersArray = new Array(game.questions.length).fill(0).map(() => ({
+      questionID: -1,
+      answer: '',
+      points: 0
+    }));
     const defaultSubmission = {
-      team: 'defaultTeam',
-      answers: []
+      user: user.uid,
+      team: localStorage.getItem('teamName'),
+      answers: emptyAnswersArray
     };
     setSubmission(defaultSubmission);
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log(submission);
+    const startedGameDoc = doc(db, 'startedGames', startedGame.id);
+    await updateDoc(startedGameDoc, { submissions: arrayUnion(submission) });
+    location.reload();
   };
+
   const handleSubmissionChange = (id, value) => {
     let copy = [...submission.answers];
+    let points = 0;
+    if (game.questions[id].answer == value) {
+      points = game.questions[id].worth;
+    }
     const newAnswer = {
       questionID: id,
-      answer: value
+      answer: value,
+      points: points
     };
     copy[id] = newAnswer;
     setSubmission({ ...submission, answers: copy });
   };
+
   const handleUnlocksChange = (id) => {
     setUnlocks([...unlocks, id]);
     alert('Klausimas atrakintas!');
@@ -53,6 +73,8 @@ export default function Game(props) {
       <LeftPageTitle>{game.name}</LeftPageTitle>
       <Container maxWidth="md">
         <CustomCard>
+          <Timmer date={startedGame.endDateTime} />
+          <br />
           {game.questions.map((question) => (
             <Accordion key={question.id}>
               <AccordionSummary
@@ -197,5 +219,50 @@ const LockedQuestion = (props) => {
         </Box>
       </Dialog>
     </>
+  );
+};
+
+const Timmer = (props) => {
+  const { date } = props;
+  let interval = useRef();
+  const [timer, setTimer] = useState('00:00:00');
+
+  const startTimer = () => {
+    const countdownDate = new Date(date).getTime();
+    interval = setInterval(() => {
+      const now = new Date().getTime();
+      const difference = countdownDate - now;
+      const hours = Math.floor(difference / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+      if (difference < 0) {
+        clearInterval(interval.current);
+        location.reload();
+      } else {
+        setTimer(
+          (hours < 10 ? '0' : '') +
+            hours +
+            ':' +
+            (minutes < 10 ? '0' : '') +
+            minutes +
+            ':' +
+            (seconds < 10 ? '0' : '') +
+            seconds
+        );
+      }
+    }, 1000);
+  };
+
+  useEffect(() => {
+    startTimer();
+    return () => {
+      clearInterval(interval.current);
+    };
+  });
+
+  return (
+    <Typography component={'div'} variant="p" sx={{ color: 'white' }} align="right">
+      Likęs laikas - {timer}
+    </Typography>
   );
 };

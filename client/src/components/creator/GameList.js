@@ -71,7 +71,8 @@ export default function GameList() {
       user: user.uid,
       game: selectedId,
       startDateTime: gameDateStart,
-      endDateTime: gameDateEnd
+      endDateTime: gameDateEnd,
+      submissions: []
     });
     handleStartClose();
     resetForms();

@@ -95,7 +95,7 @@ export default function EditGame() {
     let copy = [...questions];
     let question = {
       ...copy[id],
-      worth: value
+      worth: parseInt(value)
     };
     copy[id] = question;
     setQuestions(copy);
