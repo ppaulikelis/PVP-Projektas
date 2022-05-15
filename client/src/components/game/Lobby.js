@@ -28,7 +28,10 @@ export default function Lobby(props) {
           </Typography>
           <br />
           <Typography variant="p" component="div" color="white">
-            Žaidimo laikas: {startedGame.startDateTime} / {startedGame.endDateTime}
+            Žaidimo pradžia: {startedGame.startDateTime.replace('T', ' ')}
+          </Typography>
+          <Typography variant="p" component="div" color="white">
+            Žaidimo pabaiga: {startedGame.endDateTime.replace('T', ' ')}
           </Typography>
           {canStart && (
             <>

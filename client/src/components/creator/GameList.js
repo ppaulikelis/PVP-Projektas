@@ -64,6 +64,7 @@ export default function GameList() {
     });
     handleAddClose();
     setRefresh(refresh + 1);
+    setTab(0);
     resetForms();
     setLoading(false);
   };
@@ -77,6 +78,8 @@ export default function GameList() {
       submissions: []
     });
     handleStartClose();
+    setRefresh(refresh + 1);
+    setTab(1);
     resetForms();
   };
 
