@@ -28,6 +28,9 @@ export default function GameDashboard() {
   const { user } = useAuthContext();
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
     const startedGameRef = doc(db, 'startedGames', id);
     getDoc(startedGameRef).then((res) => {
       const startedGame = { ...res.data(), id: res.id };
@@ -140,7 +143,7 @@ export default function GameDashboard() {
   return (
     <Background>
       <MainHeader />
-      {!loading && gameStateRenderSwitch(gameState)}
+      {!loading && user && gameStateRenderSwitch(gameState)}
     </Background>
   );
 }
