@@ -25,12 +25,12 @@ export default function GameEnded(props) {
       <Container maxWidth="md">
         <CustomCard>
           {!gameFinished ? (
-            <Typography variant="p" component="div" color="white">
+            <Typography variant="p" component="div">
               Orientacinės varžybos dar nesibaigė, laukite rezultatų!
             </Typography>
           ) : (
             <>
-              <Typography variant="h4" component="div" color="white" align="center">
+              <Typography variant="h4" component="div" align="center">
                 Rezultatai
               </Typography>
               {startedGame.submissions.length > 0 && <br />}

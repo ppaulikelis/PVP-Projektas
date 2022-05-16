@@ -62,7 +62,7 @@ export default function SignIn() {
               label="Elektroninis paštas"
               name="email"
               autoComplete="email"
-              autoFocus
+              focused
             />
             <TextField
               margin="normal"
@@ -73,6 +73,7 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              focused
             />
             <Button
               type="submit"

@@ -190,17 +190,10 @@ export default function EditGame() {
             }}
             value={gameName}
             focused
-            color="info"
             name="name"
             label="Pavadinimas"
             fullWidth
             sx={{ mb: 2 }}
-            InputLabelProps={{
-              style: { color: '#1176AF' }
-            }}
-            InputProps={{
-              style: { color: 'black' }
-            }}
           />
           <TextField
             onChange={(event) => {
@@ -208,19 +201,12 @@ export default function EditGame() {
             }}
             value={gameDescription}
             focused
-            color="info"
             name="description"
             label="Aprašymas"
             fullWidth
             multiline
             rows={4}
             sx={{ mb: 1 }}
-            InputLabelProps={{
-              style: { color: '#1176AF' }
-            }}
-            InputProps={{
-              style: { color: 'black' }
-            }}
           />
 
           <Box display="flex" flexDirection={'column'} alignItems="center">
@@ -357,18 +343,11 @@ const QuestionForm = (props) => {
           onChange={(event) => handleQuestionNameChange(id, event.target.value)}
           value={initialQuestionName}
           focused
-          color="info"
           name="question"
           label="Klausimas"
           multiline
           rows={2}
           sx={{ mb: 2, mt: 2, backgroundColor: '#D1D1D1' }}
-          InputLabelProps={{
-            style: { color: '#1176AF' }
-          }}
-          InputProps={{
-            style: { color: 'black' }
-          }}
         />
         <Box display="flex">
           <Box display="flex" flexGrow={10} mr={2}>
@@ -377,16 +356,9 @@ const QuestionForm = (props) => {
               onChange={(event) => handleQuestionAnswerChange(id, event.target.value)}
               value={initialQuestionAnswer}
               focused
-              color="info"
               name="answer"
               label="Atsakymas"
               sx={{ mb: 2, backgroundColor: '#D1D1D1' }}
-              InputLabelProps={{
-                style: { color: '#1176AF' }
-              }}
-              InputProps={{
-                style: { color: 'black' }
-              }}
             />
           </Box>
           <Box display="flex" flexGrow={1}>
@@ -395,17 +367,10 @@ const QuestionForm = (props) => {
               onChange={(event) => handleQuestionWorthChange(id, event.target.value)}
               value={initialQuestionWorth}
               focused
-              color="info"
               name="worth"
               label="Klausimo vertė"
               type="number"
               sx={{ mb: 2, backgroundColor: '#D1D1D1' }}
-              InputLabelProps={{
-                style: { color: '#1176AF' }
-              }}
-              InputProps={{
-                style: { color: 'black' }
-              }}
             />
           </Box>
         </Box>
@@ -422,16 +387,9 @@ const QuestionForm = (props) => {
               multiline
               rows={2}
               focused
-              color="info"
               name="hint"
               label="Užuomina, kur rasti klausimą"
               sx={{ mb: 2, mt: 2, backgroundColor: '#D1D1D1' }}
-              InputLabelProps={{
-                style: { color: '#1176AF' }
-              }}
-              InputProps={{
-                style: { color: 'black' }
-              }}
             />
           </>
         )}

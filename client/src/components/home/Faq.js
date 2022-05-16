@@ -160,13 +160,7 @@ export default function Faq() {
       <LeftPageTitle>Dažnai užduodami klausimai</LeftPageTitle>
       <Container maxWidth="md" sx={{ pb: 5 }}>
         {faq.map((topic, index) => (
-          <CustomCard
-            key={index}
-            background={
-              index % 2 === 0
-                ? 'linear-gradient(180deg, #FFFFFF 50%, #BDBDBD 100%)'
-                : 'linear-gradient(180deg, #FFFFFF 50%, #BDBDBD 100%)'
-            }>
+          <CustomCard key={index}>
             <Box display="flex" flexDirection="column">
               <Typography variant="h4" component="div" align="center" sx={{ color: 'black' }}>
                 {topic.topic}

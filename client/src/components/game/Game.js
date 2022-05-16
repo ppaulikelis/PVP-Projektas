@@ -270,7 +270,7 @@ const Timmer = (props) => {
   });
 
   return (
-    <Typography component={'div'} variant="p" sx={{ color: 'white' }} align="right">
+    <Typography component={'div'} variant="p" align="right">
       Likęs laikas - {timer}
     </Typography>
   );

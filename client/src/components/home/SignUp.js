@@ -65,7 +65,7 @@ export default function SignUp() {
               label="Elektroninis paštas"
               name="email"
               autoComplete="email"
-              autoFocus
+              focused
             />
             <TextField
               margin="normal"
@@ -75,6 +75,7 @@ export default function SignUp() {
               label="Slaptažodis"
               type="password"
               id="password"
+              focused
             />
             <TextField
               margin="normal"
@@ -84,6 +85,7 @@ export default function SignUp() {
               label="Pakartoti slaptažodį"
               type="password"
               id="confirmPassword"
+              focused
             />
             <Button
               type="submit"

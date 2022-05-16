@@ -27,14 +27,8 @@ export default function Reviews() {
     <>
       <LeftPageTitle>Atsiliepimai</LeftPageTitle>
       <Container maxWidth="md" sx={{ pb: 5 }}>
-        {reviews.map((review, index) => (
-          <CustomCard
-            key={review.school}
-            background={
-              index % 2 === 0
-                ? 'linear-gradient(180deg, #FFFFFF 80%, #BDBDBD 100%)'
-                : 'linear-gradient(180deg, #FFFFFF 80%, #BDBDBD 100%)'
-            }>
+        {reviews.map((review) => (
+          <CustomCard key={review.school}>
             <Typography
               variant="h5"
               component="div"

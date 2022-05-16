@@ -177,17 +177,12 @@ export default function GameList() {
               setSearchTerm(event.target.value);
             }}
             focused
-            color="info"
             name="search"
             label="Paieška"
             fullWidth
             sx={{ mb: 2 }}
             InputProps={{
-              endAdornment: <SearchRoundedIcon />,
-              style: { color: '#1176AF' }
-            }}
-            InputLabelProps={{
-              style: { color: '#1176AF' }
+              endAdornment: <SearchRoundedIcon />
             }}
           />
           <Tabs
@@ -355,6 +350,7 @@ export default function GameList() {
           </DialogTitle>
           <DialogContent>
             <TextField
+              focused
               fullWidth
               label="Pavadinimas"
               required
@@ -365,6 +361,7 @@ export default function GameList() {
               }}
             />
             <TextField
+              focused
               fullWidth
               multiline
               rows={5}

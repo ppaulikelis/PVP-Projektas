@@ -23,14 +23,14 @@ export default function Lobby(props) {
       <LeftPageTitle>{game.name}</LeftPageTitle>
       <Container maxWidth="md">
         <CustomCard>
-          <Typography variant="p" component="div" color="white">
+          <Typography variant="p" component="div">
             {game.description}
           </Typography>
           <br />
-          <Typography variant="p" component="div" color="white">
+          <Typography variant="p" component="div">
             Žaidimo pradžia: {startedGame.startDateTime.replace('T', ' ')}
           </Typography>
-          <Typography variant="p" component="div" color="white">
+          <Typography variant="p" component="div">
             Žaidimo pabaiga: {startedGame.endDateTime.replace('T', ' ')}
           </Typography>
           {canStart && (
@@ -38,17 +38,10 @@ export default function Lobby(props) {
               <br />
               <TextField
                 focused
-                color="info"
                 name="teamName"
                 label="Komandos pavadinimas"
                 fullWidth
                 sx={{ mb: 2 }}
-                InputLabelProps={{
-                  style: { color: 'white' }
-                }}
-                InputProps={{
-                  style: { color: 'white' }
-                }}
                 onChange={(event) => setTeamName(event.target.value)}
               />
               <Box display="flex" justifyContent="flex-end">

@@ -17,5 +17,6 @@ export const CustomCard = (props) => {
 };
 
 CustomCard.defaultProps = {
-  background: 'linear-gradient(180deg, #FFFFFF 70%, #BDBDBD 100%);'
+  //background: 'linear-gradient(180deg, #FFFFFF 70%, #BDBDBD 100%);'
+  background: 'white'
 };
