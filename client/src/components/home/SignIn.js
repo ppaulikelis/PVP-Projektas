@@ -23,9 +23,14 @@ export default function SignIn() {
     const data = new FormData(event.currentTarget);
     const email = data.get('email');
     const password = data.get('password');
+    if (email == '' || password == '') {
+      alert('Užpildykite prisijungimo laukelius');
+      return;
+    }
     setLoading(true);
     try {
       await signIn(email, password);
+      alert('Sėkmingai prisijungėte');
       navigate('/creator');
     } catch (err) {
       alert(err.message);

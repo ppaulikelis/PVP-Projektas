@@ -25,7 +25,7 @@ export default function GameCode() {
             flexDirection: 'column',
             alignItems: 'center'
           }}>
-          <img alt={'logo'} src={'/logo_be_fono.png'} width={'400px'} />
+          <img alt={'logo'} src={'/logo_be_fono.png'} width={'300px'} />
           <TextField
             onChange={(event) => {
               setGameCode(event.target.value);

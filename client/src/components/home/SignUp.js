@@ -23,8 +23,13 @@ export default function SignUp() {
     const email = data.get('email');
     const password = data.get('password');
     const confirmPassword = data.get('confirmPassword');
+    if (email == '' || password == '' || confirmPassword == '') {
+      alert('Užpildykite registracijos laukelius');
+      return;
+    }
     if (password !== confirmPassword) {
-      return alert('Passwords dont match');
+      alert('Slaptažodžiai nesutampa');
+      return;
     }
     setLoading(true);
     try {

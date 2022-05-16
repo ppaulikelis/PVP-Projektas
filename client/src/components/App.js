@@ -39,7 +39,7 @@ function App() {
             <Route exact path="" element={<Navigate to="/home" />} />
             <Route path="/home/*" element={<HomeDashboard />} />
             <Route path="/creator/*" element={<CreatorDashboard />} />
-            <Route path="/game/*" element={<GameDashboard />} />
+            <Route path="/game/:id" element={<GameDashboard />} />
           </Routes>
         </Router>
       </ThemeProvider>
