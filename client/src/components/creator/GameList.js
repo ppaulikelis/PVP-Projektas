@@ -56,12 +56,21 @@ export default function GameList() {
   };
 
   const handleGameSubmit = async () => {
+    if (gameName == '') {
+      alert('Įveskite orientacinių varžybų pavadinimą');
+      return;
+    }
     setLoading(true);
-    await addDoc(gamesCollectionRef, {
-      user: user.uid,
-      name: gameName,
-      description: gameDescription
-    });
+    try {
+      await addDoc(gamesCollectionRef, {
+        user: user.uid,
+        name: gameName,
+        description: gameDescription
+      });
+      alert('Orientacinės varžybos sėkmingai pridėtos');
+    } catch (err) {
+      alert(err.message);
+    }
     handleAddClose();
     setRefresh(refresh + 1);
     setTab(0);
@@ -70,24 +79,49 @@ export default function GameList() {
   };
 
   const handleGameStartSubmit = async () => {
-    await addDoc(startedGamesCollectionRef, {
-      user: user.uid,
-      game: selectedId,
-      startDateTime: gameDateStart,
-      endDateTime: gameDateEnd,
-      submissions: []
-    });
+    if (gameDateStart == '' || gameDateEnd == '') {
+      alert('Užpildykite orientacinių varžybų kambario duomenis');
+      return;
+    }
+    const now = new Date().getTime();
+    const startDate = new Date(gameDateStart).getTime();
+    const endDate = new Date(gameDateEnd).getTime();
+    if (startDate >= endDate || now >= endDate) {
+      alert('Užpildykite orientacinių varžybų kambario duomenis teisingai');
+      return;
+    }
+    setLoading(true);
+    try {
+      await addDoc(startedGamesCollectionRef, {
+        user: user.uid,
+        game: selectedId,
+        startDateTime: gameDateStart,
+        endDateTime: gameDateEnd,
+        submissions: []
+      });
+      alert('Orientacinių varžybų kambarys sėkmingai sukurtas');
+    } catch (err) {
+      alert(err.message);
+    }
     handleStartClose();
     setRefresh(refresh + 1);
     setTab(1);
     resetForms();
+    setLoading(false);
   };
 
   const handleGameDelete = async () => {
-    const gameDoc = doc(db, 'games', selectedId);
-    await deleteDoc(gameDoc);
+    setLoading(true);
+    try {
+      const gameDoc = doc(db, 'games', selectedId);
+      await deleteDoc(gameDoc);
+      alert('Orientacinės varžybos sėkmingai pašalintos');
+    } catch (err) {
+      alert(err.message);
+    }
     handleDeleteClose();
     setRefresh(refresh + 1);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -303,8 +337,13 @@ export default function GameList() {
             <Button color="primary" variant="contained" onClick={handleDeleteClose}>
               Atšaukti
             </Button>
-            <Button color="error" variant="contained" autoFocus onClick={handleGameDelete}>
-              Pašalinti
+            <Button
+              color="error"
+              variant="contained"
+              autoFocus
+              onClick={handleGameDelete}
+              disabled={loading}>
+              {loading ? <CircularProgress color="secondary" /> : 'Pašalinti'}
             </Button>
           </DialogActions>
         </Box>
@@ -359,7 +398,7 @@ export default function GameList() {
         <Box p={1}>
           <DialogTitle>
             <Typography variant="h5" component="div" align="center">
-              Pradėti naujas orientacines varžybas
+              Pridėti orientacinių varžybų kambarį
             </Typography>
           </DialogTitle>
           <DialogContent>
@@ -393,8 +432,9 @@ export default function GameList() {
               color="secondary"
               variant="contained"
               sx={{ color: 'white' }}
-              onClick={handleGameStartSubmit}>
-              Pradėti
+              onClick={handleGameStartSubmit}
+              disabled={loading}>
+              {loading ? <CircularProgress color="secondary" /> : 'Pridėti'}
             </Button>
           </DialogActions>
         </Box>

@@ -20,12 +20,14 @@ import { QrReader } from 'react-qr-reader';
 import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { useAuthContext } from '../../contexts/AuthContext';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function Game(props) {
   const { user } = useAuthContext();
   const { startedGame, game } = props;
   const [submission, setSubmission] = useState({});
   const [unlocks, setUnlocks] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const emptyAnswersArray = new Array(game.questions.length).fill(0).map(() => ({
@@ -43,9 +45,16 @@ export default function Game(props) {
 
   const handleSubmit = async () => {
     console.log(submission);
-    const startedGameDoc = doc(db, 'startedGames', startedGame.id);
-    await updateDoc(startedGameDoc, { submissions: arrayUnion(submission) });
-    location.reload();
+    setLoading(true);
+    try {
+      const startedGameDoc = doc(db, 'startedGames', startedGame.id);
+      await updateDoc(startedGameDoc, { submissions: arrayUnion(submission) });
+      alert('Atsakymai priimti');
+      location.reload();
+    } catch (err) {
+      alert(err.message);
+    }
+    setLoading(false);
   };
 
   const handleSubmissionChange = (id, value) => {
@@ -65,7 +74,6 @@ export default function Game(props) {
 
   const handleUnlocksChange = (id) => {
     setUnlocks([...unlocks, id]);
-    alert('Klausimas atrakintas!');
   };
 
   return (
@@ -123,8 +131,9 @@ export default function Game(props) {
               variant="contained"
               color="secondary"
               sx={{ color: 'white' }}
-              onClick={handleSubmit}>
-              Baigti
+              onClick={handleSubmit}
+              disabled={loading}>
+              {loading ? <CircularProgress color="secondary" /> : 'Baigti'}
             </Button>
           </Box>
         </CustomCard>

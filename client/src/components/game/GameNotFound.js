@@ -1,5 +1,6 @@
 import React from 'react';
+import { LeftPageTitle } from '../additional/PageTitle';
 
 export default function GameNotFound() {
-  return <div>GameNotFound</div>;
+  return <LeftPageTitle>Orientacinių kambarys nerastas</LeftPageTitle>;
 }

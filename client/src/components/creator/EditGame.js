@@ -19,12 +19,14 @@ import { CustomCard } from '../additional/CustomCard';
 import LocalPrintshopRoundedIcon from '@mui/icons-material/LocalPrintshopRounded';
 import jsPDF from 'jspdf';
 import QRCode from 'qrcode';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function EditGame() {
   const { id } = useParams();
   const [gameName, setGameName] = useState('');
   const [gameDescription, setGameDescription] = useState('');
   const [questions, setQuestions] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getGame = async () => {
@@ -41,13 +43,20 @@ export default function EditGame() {
   }, []);
 
   const handleSumbit = async () => {
-    const gameDoc = doc(db, 'games', id);
-    const newFields = {
-      name: gameName,
-      description: gameDescription,
-      questions: questions
-    };
-    await updateDoc(gameDoc, newFields);
+    setLoading(true);
+    try {
+      const gameDoc = doc(db, 'games', id);
+      const newFields = {
+        name: gameName,
+        description: gameDescription,
+        questions: questions
+      };
+      await updateDoc(gameDoc, newFields);
+      alert('Orientacinės varžybos sėkmingai atnaujintos');
+    } catch (err) {
+      alert(err.message);
+    }
+    setLoading(false);
   };
 
   const handleAddQuestion = () => {
@@ -247,6 +256,7 @@ export default function EditGame() {
         </CustomCard>
         <IconButton
           onClick={handleSumbit}
+          disabled={loading}
           sx={{
             position: 'fixed',
             right: 40,
@@ -259,7 +269,11 @@ export default function EditGame() {
             height: '75px',
             width: '75px'
           }}>
-          <SaveRoundedIcon sx={{ color: '#ffffff', height: '50px', width: '50px' }} />
+          {loading ? (
+            <CircularProgress color="secondary" />
+          ) : (
+            <SaveRoundedIcon sx={{ color: '#ffffff', height: '50px', width: '50px' }} />
+          )}
         </IconButton>
         <IconButton
           onClick={createPDF}

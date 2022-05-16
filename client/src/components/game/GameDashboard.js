@@ -24,7 +24,7 @@ export default function GameDashboard() {
   const [startedGame, setStartedGame] = useState({});
   const [game, setGame] = useState({});
   const [loading, setLoading] = useState(true);
-  const [gameState, setGameState] = useState('DEFAULT');
+  const [gameState, setGameState] = useState(gameStates[0]);
   const { user } = useAuthContext();
 
   useEffect(() => {
@@ -33,11 +33,12 @@ export default function GameDashboard() {
     }
     const startedGameRef = doc(db, 'startedGames', id);
     getDoc(startedGameRef).then((res) => {
-      const startedGame = { ...res.data(), id: res.id };
-      stateDecider(startedGame);
       if (res.data() == null) {
+        setLoading(false);
         return;
       }
+      const startedGame = { ...res.data(), id: res.id };
+      stateDecider(startedGame);
       setStartedGame(startedGame);
       const gameRef = doc(db, 'games', startedGame.game);
       getDoc(gameRef).then((res) => {
@@ -49,12 +50,12 @@ export default function GameDashboard() {
   }, []);
 
   const stateDecider = (startedGame) => {
-    if (startedGame == null) {
-      setGameState(gameStates[0]);
-      console.log('Game not found');
-      console.log(gameStates[0]);
-      return;
-    }
+    // if (startedGame == null) {
+    //   setGameState(gameStates[0]);
+    //   console.log('Game not found');
+    //   console.log(gameStates[0]);
+    //   return;
+    // }
     const startDateTime = new Date(startedGame.startDateTime);
     const endDateTime = new Date(startedGame.endDateTime);
     const currentDateTime = new Date();
