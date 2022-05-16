@@ -133,6 +133,7 @@ const MainHeader = () => {
                   {...(page.important ? { color: 'secondary' } : {})}
                   key={page.name}
                   sx={{
+                    display: page.important && !user ? 'none' : 'flex',
                     color: page.important ? 'white' : 'rgba(67, 127, 151, 1)',
                     mx: 1,
                     fontWeight: 600

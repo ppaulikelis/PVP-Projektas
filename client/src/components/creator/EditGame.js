@@ -19,12 +19,14 @@ import { CustomCard } from '../additional/CustomCard';
 import LocalPrintshopRoundedIcon from '@mui/icons-material/LocalPrintshopRounded';
 import jsPDF from 'jspdf';
 import QRCode from 'qrcode';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function EditGame() {
   const { id } = useParams();
   const [gameName, setGameName] = useState('');
   const [gameDescription, setGameDescription] = useState('');
   const [questions, setQuestions] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getGame = async () => {
@@ -41,13 +43,20 @@ export default function EditGame() {
   }, []);
 
   const handleSumbit = async () => {
-    const gameDoc = doc(db, 'games', id);
-    const newFields = {
-      name: gameName,
-      description: gameDescription,
-      questions: questions
-    };
-    await updateDoc(gameDoc, newFields);
+    setLoading(true);
+    try {
+      const gameDoc = doc(db, 'games', id);
+      const newFields = {
+        name: gameName,
+        description: gameDescription,
+        questions: questions
+      };
+      await updateDoc(gameDoc, newFields);
+      alert('Orientacinės varžybos sėkmingai atnaujintos');
+    } catch (err) {
+      alert(err.message);
+    }
+    setLoading(false);
   };
 
   const handleAddQuestion = () => {
@@ -79,7 +88,6 @@ export default function EditGame() {
     };
     copy[id] = question;
     setQuestions(copy);
-    console.log(questions);
   };
 
   const handleQuestionAnswerChange = (id, value) => {
@@ -96,7 +104,7 @@ export default function EditGame() {
     let copy = [...questions];
     let question = {
       ...copy[id],
-      worth: value
+      worth: parseInt(value)
     };
     copy[id] = question;
     setQuestions(copy);
@@ -145,7 +153,7 @@ export default function EditGame() {
           }
           const result = await QRCode.toDataURL(question.key);
           doc.addImage(result, 'png', 20, 100, 175, 175);
-          doc.addImage('/logo_be_fono.png', 5, 10, 59, 42);
+          doc.addImage('/logo_be_fono.png', 5, 5, 50, 50);
           doc.setFontSize(25);
           if (question.hint.length > 0) {
             question.hint.match(/.{1,40}/g).forEach((row, index) => {
@@ -248,6 +256,7 @@ export default function EditGame() {
         </CustomCard>
         <IconButton
           onClick={handleSumbit}
+          disabled={loading}
           sx={{
             position: 'fixed',
             right: 40,
@@ -260,7 +269,11 @@ export default function EditGame() {
             height: '75px',
             width: '75px'
           }}>
-          <SaveRoundedIcon sx={{ color: '#ffffff', height: '50px', width: '50px' }} />
+          {loading ? (
+            <CircularProgress color="secondary" />
+          ) : (
+            <SaveRoundedIcon sx={{ color: '#ffffff', height: '50px', width: '50px' }} />
+          )}
         </IconButton>
         <IconButton
           onClick={createPDF}
