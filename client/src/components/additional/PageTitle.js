@@ -79,6 +79,37 @@ export const LeftPageTitle = (props) => {
   );
 };
 
+export const LeftPageTitle2 = (props) => {
+  return (
+    <Card
+      sx={{
+        mt: 2,
+        borderBottomRightRadius: '48px',
+        borderTopRightRadius: '48px',
+        mr: { md: 'calc(calc(calc(100% - 900px) / 2) + 20px)', xs: '20px' }
+      }}>
+      <CardContent
+        sx={{
+          background: props.background
+        }}>
+        <Box px={2} display="flex" justifyContent="flex-end">
+          <Box sx={{ width: { md: '800px', xs: '100%' } }}>
+            <Typography
+              variant="h4"
+              component="div"
+              align="center"
+              sx={{
+                color: 'white'
+              }}>
+              {props.children}
+            </Typography>
+          </Box>
+        </Box>
+      </CardContent>
+    </Card>
+  );
+};
+
 export const RightPageTitle = (props) => {
   return (
     <Card
@@ -120,6 +151,10 @@ MainRightPageTitle.defaultProps = {
 
 LeftPageTitle.defaultProps = {
   background: 'linear-gradient(180deg, #AFC139 0%, #5D7E17 100%);'
+};
+
+LeftPageTitle2.defaultProps = {
+  background: 'linear-gradient(180deg, #FE5D97 33.85%, #FDAFC5 89.58%);'
 };
 
 RightPageTitle.defaultProps = {
