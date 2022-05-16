@@ -15,6 +15,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 import CreatorHeader from './CreatorHeader';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
+import CssBaseline from '@mui/material/CssBaseline';
+import useScrollTrigger from '@mui/material/useScrollTrigger';
+import Slide from '@mui/material/Slide';
 
 const pages = [
   {
@@ -54,7 +57,22 @@ const pages = [
   }
 ];
 
-const MainHeader = () => {
+function HideOnScroll(props) {
+  const { children, window } = props;
+
+  const trigger = useScrollTrigger({
+    target: window ? window() : undefined
+  });
+
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  );
+}
+
+export default function MainHeader(props) {
+  //const MainHeader = () => {
   const { user, logout } = useAuthContext();
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -88,194 +106,267 @@ const MainHeader = () => {
 
   return (
     <>
-      <AppBar position="static" sx={{ bgcolor: 'white' }}>
-        <Container maxWidth="xl">
-          <Toolbar disableGutters>
-            <Box //logo ir pav - big
-              sx={{
-                display: { xs: 'none', md: 'flex' },
-                flex: 0,
-                justifyContent: 'left',
-                alignItems: 'center'
-              }}>
-              <Box
-                component="img"
-                sx={{
-                  height: 42,
-                  width: 59
-                }}
-                src="/logo_komposas2.png"
-              />
-              <Typography variant="h5" noWrap component="div">
-                <Link
-                  style={{
-                    color: 'rgba(67, 127, 151, 1)',
-                    fontWeight: 600,
-                    textDecoration: 'inherit'
-                  }}
-                  to="/home">
-                  ORIS
-                </Link>
-              </Typography>
-            </Box>
-            <Box // menu items - big
-              sx={{
-                //width: '65%',
-                flexGrow: 1,
-                display: { xs: 'none', md: 'flex' },
-                flex: 3,
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}>
-              {pages.map((page) => (
-                <Button
-                  variant={page.important ? 'contained' : 'text'}
-                  {...(page.important ? { color: 'secondary' } : {})}
-                  key={page.name}
+      <CssBaseline />
+      <HideOnScroll {...props}>
+        <AppBar sx={{ backgroundColor: 'rgba(0,0,0,0)' }}>
+          <Box sx={{ backgroundColor: 'white' }}>
+            <Container maxWidth="xl">
+              <Toolbar disableGutters>
+                <Box // logo ir pav - big
                   sx={{
-                    display: page.important && !user ? 'none' : 'flex',
-                    color: page.important ? 'white' : 'rgba(67, 127, 151, 1)',
-                    mx: 1,
-                    fontWeight: 600
-                  }}
-                  onClick={() => {
-                    navigate(page.url);
+                    display: { xs: 'none', lg: 'flex' },
+                    flex: 0,
+                    justifyContent: 'left',
+                    alignItems: 'center'
                   }}>
-                  {page.name}
-                </Button>
-              ))}
-            </Box>
-            <Box // menu items -small
-              sx={{
-                flexGrow: 1,
-                display: { xs: 'flex', md: 'none' }
-              }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit">
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'left'
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'left'
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{
-                  display: { xs: 'block', md: 'none' }
-                }}>
-                {pages.map((page) => (
-                  <MenuItem
-                    key={page.name}
-                    onClick={() => {
-                      navigate(page.url);
-                    }}>
-                    <Typography textAlign="center">{page.name}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
-            </Box>
-            <Box //logo ir pav - small
-              sx={{
-                display: { xs: 'flex', md: 'none' },
-                flex: 4,
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}>
-              <Box
-                component="img"
-                sx={{
-                  height: 42,
-                  width: 59
-                }}
-                src="/logo_komposas2.png"
-              />
-              <Typography variant="h5" noWrap component="div">
-                <Link
-                  style={{
-                    color: 'rgba(67, 127, 151, 1)',
-                    fontWeight: 600,
-                    textDecoration: 'inherit'
-                  }}
-                  to="/home">
-                  ORIS
-                </Link>
-              </Typography>
-            </Box>
-            <Box //user account item
-              sx={{
-                display: 'flex',
-                flex: 1,
-                justifyContent: 'right',
-                alignItems: 'center',
-                flexGrow: 0
-              }}>
-              {user ? (
-                <React.Fragment>
-                  <Typography color="black" fontWeight={600}>
-                    {user.email}
+                  <Box
+                    component="img"
+                    sx={{
+                      height: 42,
+                      width: 59
+                    }}
+                    src="/logo_komposas2.png"
+                  />
+                  <Typography variant="h5" noWrap component="div">
+                    <Link
+                      style={{
+                        color: 'rgba(67, 127, 151, 1)',
+                        fontWeight: 600,
+                        textDecoration: 'inherit'
+                      }}
+                      to="/home">
+                      ORIS
+                    </Link>
                   </Typography>
+                </Box>
+                <Box // menu items - big
+                  sx={{
+                    flexGrow: 1,
+                    display: { xs: 'none', lg: 'flex' },
+                    flex: 3,
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                  }}>
+                  {pages.map((page) => (
+                    <Button
+                      variant={page.important ? 'contained' : 'text'}
+                      {...(page.important ? { color: 'secondary' } : {})}
+                      key={page.name}
+                      sx={{
+                        color: page.important ? 'white' : 'rgba(67, 127, 151, 1)',
+                        mx: 1,
+                        fontWeight: 600
+                      }}
+                      onClick={() => {
+                        navigate(page.url);
+                      }}>
+                      {page.name}
+                    </Button>
+                  ))}
+                </Box>
+                <Box // menu items - small
+                  sx={{
+                    flexGrow: 1,
+                    display: { xs: 'flex', lg: 'none' }
+                  }}>
                   <IconButton
                     size="large"
                     aria-label="account of current user"
                     aria-controls="menu-appbar"
                     aria-haspopup="true"
-                    onClick={handleMenu}
-                    color="inherit">
-                    <Avatar sx={{ bgcolor: '#FFB30F' }}>{user.email[0].toUpperCase()}</Avatar>
+                    onClick={handleOpenNavMenu}
+                    color="primary">
+                    <MenuIcon />
                   </IconButton>
                   <Menu
                     id="menu-appbar"
-                    anchorEl={anchorEl}
+                    anchorEl={anchorElNav}
                     anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right'
+                      vertical: 'bottom',
+                      horizontal: 'left'
                     }}
                     keepMounted
                     transformOrigin={{
                       vertical: 'top',
-                      horizontal: 'right'
+                      horizontal: 'left'
                     }}
-                    open={Boolean(anchorEl)}
-                    onClose={handleClose}>
-                    <MenuItem
-                      sx={{ justifyContent: 'center' }}
-                      onClick={() => navigate('/creator')}>
-                      Skydelis
-                    </MenuItem>
-                    <MenuItem disabled={loading} onClick={() => handleLogout()}>
-                      {loading ? <CircularProgress color="secondary" /> : 'Atsijungti'}
-                    </MenuItem>
+                    open={Boolean(anchorElNav)}
+                    onClose={handleCloseNavMenu}
+                    sx={{
+                      display: { xs: 'block', lg: 'none' }
+                    }}>
+                    {pages.map((page) => (
+                      <MenuItem
+                        key={page.name}
+                        onClick={() => {
+                          navigate(page.url);
+                        }}>
+                        <Typography textAlign="center">{page.name}</Typography>
+                      </MenuItem>
+                    ))}
                   </Menu>
-                </React.Fragment>
-              ) : (
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  sx={{ color: 'white', fontWeight: 600 }}
-                  onClick={() => navigate('signin')}
-                  endIcon={<LoginOutlinedIcon />}>
-                  Prisijungti
-                </Button>
-              )}
-            </Box>
-          </Toolbar>
-        </Container>
-      </AppBar>
-      {user ? <CreatorHeader /> : <></>}
+                </Box>
+                <Box // logo ir pav - small
+                  sx={{
+                    display: { xs: 'flex', lg: 'none' },
+                    flex: 40,
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                  }}>
+                  <Box
+                    component="img"
+                    sx={{
+                      height: 42,
+                      width: 59
+                    }}
+                    src="/logo_komposas2.png"
+                  />
+                  <Typography variant="h5" noWrap component="div">
+                    <Link
+                      style={{
+                        color: 'rgba(67, 127, 151, 1)',
+                        fontWeight: 600,
+                        textDecoration: 'inherit'
+                      }}
+                      to="/home">
+                      ORIS
+                    </Link>
+                  </Typography>
+                </Box>
+                <Box // user account item - small
+                  sx={{
+                    display: { xs: 'flex', lg: 'none' },
+                    flex: 1,
+                    justifyContent: 'right',
+                    alignItems: 'center',
+                    flexGrow: 0
+                  }}>
+                  {user ? (
+                    <React.Fragment>
+                      <IconButton
+                        size="large"
+                        aria-label="account of current user"
+                        aria-controls="menu-appbar"
+                        aria-haspopup="true"
+                        onClick={handleMenu}
+                        color="inherit">
+                        <Avatar sx={{ bgcolor: '#FFB30F' }}>{user.email[0].toUpperCase()}</Avatar>
+                      </IconButton>
+                      <Menu
+                        id="menu-appbar"
+                        anchorEl={anchorEl}
+                        anchorOrigin={{
+                          vertical: 'top',
+                          horizontal: 'right'
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                          vertical: 'top',
+                          horizontal: 'right'
+                        }}
+                        open={Boolean(anchorEl)}
+                        onClose={handleClose}
+                        sx={{
+                          display: { xs: 'block', lg: 'none' }
+                        }}>
+                        <Typography sx={{ pr: 2, pl: 2 }} color="black" fontWeight={600}>
+                          {user.email}
+                        </Typography>
+                        <MenuItem
+                          sx={{ justifyContent: 'center' }}
+                          onClick={() => navigate('/creator')}>
+                          Skydelis
+                        </MenuItem>
+                        <MenuItem
+                          disabled={loading}
+                          sx={{ justifyContent: 'center' }}
+                          onClick={() => handleLogout()}>
+                          {loading ? <CircularProgress color="secondary" /> : 'Atsijungti'}
+                        </MenuItem>
+                      </Menu>
+                    </React.Fragment>
+                  ) : (
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      sx={{ color: 'white', fontWeight: 600 }}
+                      onClick={() => navigate('signin')}
+                      endIcon={<LoginOutlinedIcon />}>
+                      Prisijungti
+                    </Button>
+                  )}
+                </Box>
+                <Box // user account item - big
+                  sx={{
+                    display: { xs: 'none', lg: 'flex' },
+                    flex: 1,
+                    justifyContent: 'right',
+                    alignItems: 'center',
+                    flexGrow: 0
+                  }}>
+                  {user ? (
+                    <React.Fragment>
+                      <Typography color="black" fontWeight={600}>
+                        {user.email}
+                      </Typography>
+                      <IconButton
+                        size="large"
+                        aria-label="account of current user"
+                        aria-controls="menu-appbar"
+                        aria-haspopup="true"
+                        onClick={handleMenu}
+                        color="inherit">
+                        <Avatar sx={{ bgcolor: '#FFB30F' }}>{user.email[0].toUpperCase()}</Avatar>
+                      </IconButton>
+                      <Menu
+                        id="menu-appbar"
+                        anchorEl={anchorEl}
+                        anchorOrigin={{
+                          vertical: 'top',
+                          horizontal: 'right'
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                          vertical: 'top',
+                          horizontal: 'right'
+                        }}
+                        open={Boolean(anchorEl)}
+                        onClose={handleClose}
+                        sx={{
+                          display: { xs: 'none', lg: 'block' }
+                        }}>
+                        <MenuItem
+                          sx={{ justifyContent: 'center' }}
+                          onClick={() => navigate('/creator')}>
+                          Skydelis
+                        </MenuItem>
+                        <MenuItem
+                          disabled={loading}
+                          sx={{ justifyContent: 'center' }}
+                          onClick={() => handleLogout()}>
+                          {loading ? <CircularProgress color="secondary" /> : 'Atsijungti'}
+                        </MenuItem>
+                      </Menu>
+                    </React.Fragment>
+                  ) : (
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      sx={{ color: 'white', fontWeight: 600 }}
+                      onClick={() => navigate('signin')}
+                      endIcon={<LoginOutlinedIcon />}>
+                      Prisijungti
+                    </Button>
+                  )}
+                </Box>
+              </Toolbar>
+            </Container>
+          </Box>
+          {user ? <CreatorHeader /> : <></>}
+        </AppBar>
+      </HideOnScroll>
     </>
   );
-};
-export default MainHeader;
+} //;
+//export default MainHeader();
