@@ -7,7 +7,8 @@ export const Background2 = ({ children }) => {
         background: 'url("/pvpbguser.png") rgba(0, 0, 0, 0) no-repeat center center fixed',
         backgroundSize: 'cover',
         backgroundBlendMode: 'multiply',
-        minHeight: '100vh'
+        minHeight: '100vh',
+        paddingTop: '130px'
       }}>
       {children}
     </div>

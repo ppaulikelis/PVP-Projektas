@@ -238,22 +238,21 @@ export default function GameList() {
                       }}>
                       <Button
                         variant="contained"
-                        color="success"
-                        sx={{ ml: '10px', borderRadius: '69px' }}
+                        sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#008724' }}
                         onClick={() => handleStartOpen(game.id)}>
                         <PlayArrowIcon />
                       </Button>
                       <Button
                         variant="contained"
                         color="secondary"
-                        sx={{ ml: '10px', borderRadius: '69px' }}
+                        sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#9540DF' }}
                         onClick={() => navigate('game/' + game.id)}>
                         <EditIcon sx={{ color: 'white' }} />
                       </Button>
                       <Button
                         variant="contained"
                         color="error"
-                        sx={{ ml: '10px', borderRadius: '69px' }}
+                        sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#e00000' }}
                         onClick={() => handleDeleteOpen(game.id)}>
                         <DeleteRoundedIcon />
                       </Button>
@@ -298,8 +297,7 @@ export default function GameList() {
                     }}>
                     <Button
                       variant="contained"
-                      color="success"
-                      sx={{ ml: '10px', borderRadius: '69px' }}
+                      sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#008724' }}
                       onClick={() => navigator.clipboard.writeText(startedGame.id)}>
                       <ContentCopyIcon />
                     </Button>
