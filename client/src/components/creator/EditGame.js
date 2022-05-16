@@ -183,7 +183,7 @@ export default function EditGame() {
     <>
       <LeftPageTitle>Orientacinių varžybų redagavimas</LeftPageTitle>
       <Container maxWidth="lg" sx={{ pb: 5 }}>
-        <CustomCard>
+        <CustomCard background="white">
           <TextField
             onChange={(event) => {
               setGameName(event.target.value);
@@ -196,10 +196,10 @@ export default function EditGame() {
             fullWidth
             sx={{ mb: 2 }}
             InputLabelProps={{
-              style: { color: 'white' }
+              style: { color: '#1176AF' }
             }}
             InputProps={{
-              style: { color: 'white' }
+              style: { color: 'black' }
             }}
           />
           <TextField
@@ -216,10 +216,10 @@ export default function EditGame() {
             rows={4}
             sx={{ mb: 1 }}
             InputLabelProps={{
-              style: { color: 'white' }
+              style: { color: '#1176AF' }
             }}
             InputProps={{
-              style: { color: 'white' }
+              style: { color: 'black' }
             }}
           />
 
@@ -249,8 +249,8 @@ export default function EditGame() {
 
           <Box display="flex" flexDirection={'column'} alignItems="center">
             <br />
-            <Typography component={'div'} variant="h7" color="#ffffff">
-              Norėdami išsaugoti pakeitimus nepamirškite paspausti žalio mygtuko ekrano dešinėje
+            <Typography component={'div'} variant="h7" color="#1176AF">
+              *Norėdami išsaugoti pakeitimus nepamirškite paspausti žalio mygtuko ekrano dešinėje
             </Typography>
           </Box>
         </CustomCard>
@@ -339,11 +339,11 @@ const QuestionForm = (props) => {
   };
 
   return (
-    <CustomCard background={'#55B0D5'}>
+    <CustomCard background={'#e2e2e2'}>
       <Box display="flex" flexDirection={'column'}>
         <Box display={'flex'} flexDirection={'row'}>
           <Box display={'flex'} flexGrow={1} alignItems={'center'} justifyContent={'left'}>
-            <Typography component={'div'} variant={'h6'} color="#ffffff">
+            <Typography component={'div'} variant={'h6'} color="#1176AF">
               {id + 1}. Klausimas
             </Typography>
           </Box>
@@ -362,12 +362,12 @@ const QuestionForm = (props) => {
           label="Klausimas"
           multiline
           rows={2}
-          sx={{ mb: 2, mt: 2 }}
+          sx={{ mb: 2, mt: 2, backgroundColor: '#D1D1D1' }}
           InputLabelProps={{
-            style: { color: 'white' }
+            style: { color: '#1176AF' }
           }}
           InputProps={{
-            style: { color: 'white' }
+            style: { color: 'black' }
           }}
         />
         <Box display="flex">
@@ -380,12 +380,12 @@ const QuestionForm = (props) => {
               color="info"
               name="answer"
               label="Atsakymas"
-              sx={{ mb: 2 }}
+              sx={{ mb: 2, backgroundColor: '#D1D1D1' }}
               InputLabelProps={{
-                style: { color: 'white' }
+                style: { color: '#1176AF' }
               }}
               InputProps={{
-                style: { color: 'white' }
+                style: { color: 'black' }
               }}
             />
           </Box>
@@ -399,18 +399,18 @@ const QuestionForm = (props) => {
               name="worth"
               label="Klausimo vertė"
               type="number"
-              sx={{ mb: 2 }}
+              sx={{ mb: 2, backgroundColor: '#D1D1D1' }}
               InputLabelProps={{
-                style: { color: 'white' }
+                style: { color: '#1176AF' }
               }}
               InputProps={{
-                style: { color: 'white' }
+                style: { color: 'black' }
               }}
             />
           </Box>
         </Box>
         <FormControlLabel
-          sx={{ color: 'white' }}
+          sx={{ color: '#1176AF' }}
           control={<Switch color="secondary" checked={checked} onChange={handleChange} />}
           label="Užuomina, kur rasti klausimą"
         />
@@ -425,12 +425,12 @@ const QuestionForm = (props) => {
               color="info"
               name="hint"
               label="Užuomina, kur rasti klausimą"
-              sx={{ mb: 2, mt: 2 }}
+              sx={{ mb: 2, mt: 2, backgroundColor: '#D1D1D1' }}
               InputLabelProps={{
-                style: { color: 'white' }
+                style: { color: '#1176AF' }
               }}
               InputProps={{
-                style: { color: 'white' }
+                style: { color: 'black' }
               }}
             />
           </>

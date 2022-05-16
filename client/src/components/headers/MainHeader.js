@@ -130,7 +130,7 @@ export default function MainHeader(props) {
                   <Typography variant="h5" noWrap component="div">
                     <Link
                       style={{
-                        color: 'rgba(67, 127, 151, 1)',
+                        color: '#1176AF',
                         fontWeight: 600,
                         textDecoration: 'inherit'
                       }}
@@ -154,7 +154,7 @@ export default function MainHeader(props) {
                       {...(page.important ? { color: 'secondary' } : {})}
                       key={page.name}
                       sx={{
-                        color: page.important ? 'white' : 'rgba(67, 127, 151, 1)',
+                        color: page.important ? 'white' : '#1176AF',
                         mx: 1,
                         fontWeight: 600
                       }}

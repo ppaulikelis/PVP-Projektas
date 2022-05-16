@@ -4,14 +4,12 @@ import Container from '@mui/material/Container';
 import { CustomCard } from '../additional/CustomCard';
 import { ProfileField } from './ProfileField';
 import { Typography } from '@mui/material';
-import { LeftPageTitle2 } from '../additional/PageTitle';
+import { LeftPageTitle } from '../additional/PageTitle';
 
 export default function Profile() {
   return (
     <>
-      {/* Page Header, copy as example */}
-      <LeftPageTitle2>Profilis</LeftPageTitle2>
-      {/* Page Header, copy as example */}
+      <LeftPageTitle>Profilis</LeftPageTitle>
       <Container
         maxWidth="xl"
         sx={{

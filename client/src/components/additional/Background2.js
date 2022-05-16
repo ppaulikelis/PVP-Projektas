@@ -4,7 +4,7 @@ export const Background2 = ({ children }) => {
   return (
     <div
       style={{
-        backgroundColor: '#EAEAEA',
+        background: 'url("/pvpbguser.png") rgba(0, 0, 0, 0) no-repeat center center fixed',
         backgroundSize: 'cover',
         backgroundBlendMode: 'multiply',
         minHeight: '100vh'

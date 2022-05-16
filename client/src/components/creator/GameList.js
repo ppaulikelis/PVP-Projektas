@@ -171,7 +171,7 @@ export default function GameList() {
     <>
       <LeftPageTitle>Orientacinės varžybos</LeftPageTitle>
       <Container maxWidth="lg" sx={{ pb: 5 }}>
-        <CustomCard>
+        <CustomCard background="white">
           <TextField
             onChange={(event) => {
               setSearchTerm(event.target.value);
@@ -184,19 +184,19 @@ export default function GameList() {
             sx={{ mb: 2 }}
             InputProps={{
               endAdornment: <SearchRoundedIcon />,
-              style: { color: 'white' }
+              style: { color: '#1176AF' }
             }}
             InputLabelProps={{
-              style: { color: 'white' }
+              style: { color: '#1176AF' }
             }}
           />
           <Tabs
             onChange={handleTabs}
             variant="fullWidth"
             value={tab}
-            TabIndicatorProps={{ style: { background: '#FFFFFF' } }}>
-            <Tab label={<Typography sx={{ color: '#ffffff' }}>Visos</Typography>} />
-            <Tab label={<Typography sx={{ color: '#ffffff' }}>Vykstančios</Typography>} />
+            TabIndicatorProps={{ style: { background: '#1176AF' } }}>
+            <Tab label={<Typography sx={{ color: '#1176AF' }}>Visos</Typography>} />
+            <Tab label={<Typography sx={{ color: '#1176AF' }}>Vykstančios</Typography>} />
           </Tabs>
           <TabPanel value={tab} index={0}>
             <br />
@@ -223,7 +223,7 @@ export default function GameList() {
                         component="div"
                         align="left"
                         sx={{
-                          color: 'white',
+                          color: '#1176AF',
                           fontStyle: game.name ? 'normal' : 'italic'
                         }}>
                         {game.name ? game.name : 'be pavadinimo'}

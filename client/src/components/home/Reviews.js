@@ -32,18 +32,23 @@ export default function Reviews() {
             key={review.school}
             background={
               index % 2 === 0
-                ? 'linear-gradient(180deg, #55B0D5 0%, #1176AF 71.35%)'
-                : 'linear-gradient(180deg, #FE5D97 33.85%, #FDAFC5 89.58%)'
+                ? 'linear-gradient(180deg, #FFFFFF 80%, #BDBDBD 100%)'
+                : 'linear-gradient(180deg, #FFFFFF 80%, #BDBDBD 100%)'
             }>
             <Typography
               variant="h5"
               component="div"
               align="left"
-              sx={{ color: 'white', fontStyle: 'italic' }}>
+              sx={{ color: 'black', fontStyle: 'italic' }}>
               “{review.text}”
             </Typography>
             <br />
-            <Typography variant="p" component="div" align="right" sx={{ color: 'white' }}>
+            <Typography
+              variant="p"
+              fontWeight="600"
+              component="div"
+              align="right"
+              sx={{ color: '#1176AF' }}>
               {review.school}
             </Typography>
           </CustomCard>

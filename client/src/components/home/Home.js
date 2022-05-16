@@ -23,7 +23,7 @@ export default function Home() {
       </MainRightPageTitle>
       {/* Page MAIN Header, DON'T COPY as example */}
       <Container maxWidth="lg" sx={{ pb: 5 }}>
-        <CustomCard>
+        <CustomCard background="linear-gradient(180deg, #55B0D5 0%, #1176AF 71.35%)">
           <Typography
             variant="h3"
             component="div"

@@ -14,12 +14,13 @@ export default function Subscription() {
           <Box display="flex">
             <Box
               sx={{
+                pr: 5,
                 display: 'flex',
                 flex: 1,
                 justifyContent: 'center',
                 alignItems: 'center'
               }}>
-              <LoyaltyIcon sx={{ color: 'white', fontSize: 175 }} />
+              <LoyaltyIcon sx={{ color: '#1176AF', fontSize: 175 }} />
             </Box>
             <Box
               sx={{
@@ -32,20 +33,20 @@ export default function Subscription() {
               <Typography
                 variant="h3"
                 component="div"
-                align="center"
-                sx={{ color: 'white', fontWeight: 400, fontSize: 80 }}>
+                align="left"
+                sx={{ color: 'black', fontWeight: 400, fontSize: 80 }}>
                 75€/mėn
               </Typography>
-              <Typography variant="p" component="div" color="white" align="center">
+              <Typography variant="p" component="div" color="black" align="left">
                 *Prenumeraciją bet kuriuo laikotarpiu galima nutraukti
               </Typography>
               <br />
-              <Typography variant="p" component="div" color="white" align="center">
+              <Typography variant="p" component="div" color="black" align="left">
                 Prenumeratą įsigyti galite susisiekę su mumis el. paštu: pvp.projektas@pvp.pvp arba
                 telefonu: +37061111111
               </Typography>
               <br />
-              <Typography variant="p" component="div" color="white" align="center">
+              <Typography variant="p" component="div" color="black" align="left">
                 Daugiau informacijos &quot;D.U.K&quot; ir &quot;Kontaktai&quot; skiltyje
               </Typography>
             </Box>

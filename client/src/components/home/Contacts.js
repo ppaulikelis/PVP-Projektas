@@ -19,7 +19,7 @@ export default function Contacts() {
                 justifyContent: 'center',
                 alignItems: 'center'
               }}>
-              <ConnectWithoutContactIcon sx={{ color: 'white', fontSize: 175 }} />
+              <ConnectWithoutContactIcon sx={{ color: '#1176AF', fontSize: 175 }} />
             </Box>
             <Box
               sx={{
@@ -29,18 +29,18 @@ export default function Contacts() {
                 alignItems: 'left',
                 flexDirection: 'column'
               }}>
-              <Typography variant="p" component="div" color="white">
+              <Typography variant="p" component="div" color="black">
                 Norėdami įsigyti sistemos prenumeratą ar užduoti Jums aktualių klausimų drąsiai
                 kreipkitės nurodytais kontaktais. Mielai laukiame Jūsų klausimų!
               </Typography>
               <br />
-              <Typography variant="p" component="div" color="white" align="left">
+              <Typography variant="p" component="div" color="black" align="left">
                 Adresas: Studentų g. 50, Kaunas LT-51368
               </Typography>
-              <Typography variant="p" component="div" color="white">
+              <Typography variant="p" component="div" color="black">
                 Elektroninis paštas: pvp.projektas@pvp.pvp
               </Typography>
-              <Typography variant="p" component="div" color="white">
+              <Typography variant="p" component="div" color="black">
                 Telefonas: +37061111111
               </Typography>
             </Box>
