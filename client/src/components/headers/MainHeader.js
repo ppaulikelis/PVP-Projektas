@@ -57,12 +57,11 @@ const pages = [
   }
 ];
 
-
-function HideOnScroll(props: Props) {
+function HideOnScroll(props) {
   const { children, window } = props;
 
   const trigger = useScrollTrigger({
-    target: window ? window() : undefined,
+    target: window ? window() : undefined
   });
 
   return (
@@ -72,8 +71,8 @@ function HideOnScroll(props: Props) {
   );
 }
 
-export default function MainHeader(props: Props) {
-//const MainHeader = () => {
+export default function MainHeader(props) {
+  //const MainHeader = () => {
   const { user, logout } = useAuthContext();
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -271,7 +270,7 @@ export default function MainHeader(props: Props) {
                         sx={{
                           display: { xs: 'block', lg: 'none' }
                         }}>
-                        <Typography sx={{ pr: 2, pl:2 }} color="black" fontWeight={600}>
+                        <Typography sx={{ pr: 2, pl: 2 }} color="black" fontWeight={600}>
                           {user.email}
                         </Typography>
                         <MenuItem
@@ -279,7 +278,10 @@ export default function MainHeader(props: Props) {
                           onClick={() => navigate('/creator')}>
                           Skydelis
                         </MenuItem>
-                        <MenuItem disabled={loading} sx={{ justifyContent: 'center' }} onClick={() => handleLogout()}>
+                        <MenuItem
+                          disabled={loading}
+                          sx={{ justifyContent: 'center' }}
+                          onClick={() => handleLogout()}>
                           {loading ? <CircularProgress color="secondary" /> : 'Atsijungti'}
                         </MenuItem>
                       </Menu>
@@ -339,7 +341,10 @@ export default function MainHeader(props: Props) {
                           onClick={() => navigate('/creator')}>
                           Skydelis
                         </MenuItem>
-                        <MenuItem disabled={loading} sx={{ justifyContent: 'center' }} onClick={() => handleLogout()}>
+                        <MenuItem
+                          disabled={loading}
+                          sx={{ justifyContent: 'center' }}
+                          onClick={() => handleLogout()}>
                           {loading ? <CircularProgress color="secondary" /> : 'Atsijungti'}
                         </MenuItem>
                       </Menu>
@@ -358,10 +363,10 @@ export default function MainHeader(props: Props) {
               </Toolbar>
             </Container>
           </Box>
-        {user ? <CreatorHeader /> : <></>}
+          {user ? <CreatorHeader /> : <></>}
         </AppBar>
       </HideOnScroll>
     </>
   );
-}//;
+} //;
 //export default MainHeader();
