@@ -109,7 +109,7 @@ const faq = [
           'Mokiniai mato varžybų klausimų sąrašą, atvertus klausimą į jį atsako, patvirtina atsakymą. Atsakius į visus klausimus gali baigti varžybas. Pasibaigus laikui varžybos yra stabdomos, nepatvirtinti atsakymai nėra įrašomi.'
       },
       {
-        question: '• Ar žaidimo metu varžybų organizatorius mato rezultatus?',
+        question: 'Ar žaidimo metu varžybų organizatorius mato rezultatus?',
         answer:
           'Organizatorius varžybų metu ir joms pasibaigus mato komandas ir jas sudarančius narius, jų rezultatą bei pateiktus atsakymus. Jei yra būtinybė, organizatorius gali keisti komandų gautus taškus.'
       },
@@ -164,28 +164,28 @@ export default function Faq() {
             key={index}
             background={
               index % 2 === 0
-                ? 'linear-gradient(180deg, #55B0D5 0%, #1176AF 71.35%)'
-                : 'linear-gradient(180deg, #FE5D97 33.85%, #FDAFC5 89.58%)'
+                ? 'linear-gradient(180deg, #FFFFFF 50%, #BDBDBD 100%)'
+                : 'linear-gradient(180deg, #FFFFFF 50%, #BDBDBD 100%)'
             }>
             <Box display="flex" flexDirection="column">
-              <Typography variant="h4" component="div" align="center" sx={{ color: 'white' }}>
+              <Typography variant="h4" component="div" align="center" sx={{ color: 'black' }}>
                 {topic.topic}
               </Typography>
               <br />
               {topic.questions.map((question) => (
                 <Accordion key={question.question}>
                   <AccordionSummary
-                    expandIcon={<ExpandMoreIcon sx={{ color: 'white' }} />}
+                    expandIcon={<ExpandMoreIcon sx={{ color: '353535' }} />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                     sx={{
-                      backgroundColor: index % 2 === 0 ? '#55B0D5' : '#FF8CB6'
+                      backgroundColor: index % 2 === 0 ? '#F3F3F3' : '#F3F3F3'
                     }}>
-                    <Typography sx={{ color: 'white' }}>{question.question}</Typography>
+                    <Typography sx={{ color: '#1176AF' }}>{question.question}</Typography>
                   </AccordionSummary>
                   <AccordionDetails
                     sx={{
-                      backgroundColor: index % 2 === 0 ? '#2997D6' : '#FF76A7'
+                      backgroundColor: index % 2 === 0 ? '#55B0D5' : '#F4B52C'
                     }}>
                     <Typography sx={{ color: 'white' }}>{question.answer}</Typography>
                   </AccordionDetails>

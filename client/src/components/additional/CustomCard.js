@@ -3,7 +3,7 @@ import React from 'react';
 
 export const CustomCard = (props) => {
   return (
-    <Card sx={{ mt: 2, borderRadius: '69px' }}>
+    <Card sx={{ mt: 2, borderRadius: '69px', border: 1, borderColor: 'grey.400' }}>
       <CardContent
         sx={{
           background: props.background
@@ -17,5 +17,5 @@ export const CustomCard = (props) => {
 };
 
 CustomCard.defaultProps = {
-  background: 'linear-gradient(180deg, #55B0D5 0%, #1176AF 71.35%);'
+  background: 'linear-gradient(180deg, #FFFFFF 70%, #BDBDBD 100%);'
 };

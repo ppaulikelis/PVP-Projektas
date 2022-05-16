@@ -15,7 +15,12 @@ export const MainLeftPageTitle = (props) => {
           background: props.background
         }}>
         <Box py={1} px={2}>
-          <Typography variant="h4" component="div" align="left" sx={{ color: 'white' }}>
+          <Typography
+            variant="h4"
+            component="div"
+            fontWeight="600"
+            align="left"
+            sx={{ color: 'white' }}>
             {props.children}
           </Typography>
         </Box>
@@ -111,15 +116,15 @@ export const RightPageTitle = (props) => {
 };
 
 MainLeftPageTitle.defaultProps = {
-  background: 'linear-gradient(180deg, #FE5D97 33.85%, #FDAFC5 89.58%);'
+  background: 'linear-gradient(180deg, #FCBD36 40%, #FF852D 100%);'
 };
 
 MainRightPageTitle.defaultProps = {
-  background: 'linear-gradient(180deg, #AFC139 0%, #5D7E17 100%);'
+  background: 'linear-gradient(180deg, #FCBD36 40%, #FF852D 100%);'
 };
 
 LeftPageTitle.defaultProps = {
-  background: 'linear-gradient(180deg, #AFC139 0%, #5D7E17 100%);'
+  background: 'linear-gradient(180deg, #FCBD36 40%, #FF852D 100%);'
 };
 
 RightPageTitle.defaultProps = {

@@ -18,7 +18,7 @@ export default function GameCode() {
 
   return (
     <Container maxWidth="sm">
-      <CustomCard background="white">
+      <CustomCard>
         <Box
           sx={{
             display: 'flex',
@@ -42,7 +42,7 @@ export default function GameCode() {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2, color: 'white' }}
+            sx={{ mt: 3, mb: 2, p: 2, color: 'white' }}
             color="secondary">
             Dalyvauti
           </Button>

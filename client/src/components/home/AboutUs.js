@@ -43,7 +43,7 @@ export default function AboutUs() {
                 justifyContent: 'center',
                 alignItems: 'center'
               }}>
-              <img alt={'logo'} src={'/logo_white.png'} width={'400px'} />
+              <img alt={'logo'} src={'/logo_blue.png'} width={'400px'} />
             </Box>
             <Box
               sx={{
@@ -53,7 +53,7 @@ export default function AboutUs() {
                 alignItems: 'center',
                 flexDirection: 'column'
               }}>
-              <Typography variant="p" component="div" color="white">
+              <Typography variant="p" component="div" color="black">
                 ORIS - orientacinių varžybų ruošimo ir organizavimo informacinė sistema. Ši sistema
                 sujungia švietimą ir aktyvų laisvalaikį. ORIS buvo sukurta mokykloms, siekiant
                 skatinti mokinių žinių pritaikomumą, smalsumą bei fizinį aktyvumą. Tai platforma,
@@ -61,17 +61,15 @@ export default function AboutUs() {
                 vaikų edukacija fizinės veiklos metu.
               </Typography>
               <br />
-              <Typography variant="p" component="div" color="white">
+              <Typography variant="p" component="div" color="black">
                 ORIS pagalba mokytojai turi galimybę paprasčiau kurti interaktyvias varžybas,
                 struktūrizuoti ir įvertinti užduotis. Tuo tarpu mokiniai - dalyvauti, spręsti bei
                 įvykdyti užduotis.
               </Typography>
             </Box>
           </Box>
-        </CustomCard>
-        <CustomCard background="linear-gradient(180deg, #FE5D97 33.85%, #FDAFC5 89.58%);">
           <Box display="flex" flexDirection="column">
-            <Typography variant="h4" component="div" align="center" sx={{ color: 'white' }}>
+            <Typography variant="h4" component="div" align="center" sx={{ color: 'black' }}>
               ORIS komanda
             </Typography>
             <br />
@@ -91,7 +89,7 @@ export default function AboutUs() {
                     variant="h5"
                     component="div"
                     align="center"
-                    sx={{ color: 'white', mt: 2 }}>
+                    sx={{ color: 'black', mt: 2 }}>
                     {employee.name}
                   </Typography>
                 </Box>
