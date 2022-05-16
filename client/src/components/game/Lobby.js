@@ -1,48 +1,67 @@
 import { Button, Container, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import React from 'react';
+import React, { useState } from 'react';
 import { CustomCard } from '../additional/CustomCard';
 import { LeftPageTitle } from '../additional/PageTitle';
 
-export default function Lobby() {
+export default function Lobby(props) {
+  const { startedGame, game, canStart, stateDecider } = props;
+  const [teamName, setTeamName] = useState('');
+
+  const handleSumbit = () => {
+    if (teamName != '') {
+      localStorage.setItem('startedGameID', startedGame.id);
+      localStorage.setItem('teamName', teamName);
+      stateDecider(startedGame);
+    } else {
+      alert('Įveskite komandos pavadinimą');
+    }
+  };
+
   return (
     <>
-      <LeftPageTitle>Pavadinimas</LeftPageTitle>
+      <LeftPageTitle>{game.name}</LeftPageTitle>
       <Container maxWidth="md">
         <CustomCard>
           <Typography variant="p" component="div" color="white">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-            has been the industrys standard dummy text ever since the 1500s, when an unknown printer
-            took a galley of type and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting, remaining
-            essentially unchanged. It was popularised in the 1960s with the release of Letraset
-            sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-            software like Aldus PageMaker including versions of Lorem Ipsum.
+            {game.description}
           </Typography>
           <br />
           <Typography variant="p" component="div" color="white">
-            Žaidimo laikas: 2022-05-06, 15:30 - 17:00
+            Žaidimo pradžia: {startedGame.startDateTime.replace('T', ' ')}
           </Typography>
-          <br />
-          <TextField
-            focused
-            color="info"
-            name="teamName"
-            label="Komandos pavadinimas"
-            fullWidth
-            sx={{ mb: 2 }}
-            InputLabelProps={{
-              style: { color: 'white' }
-            }}
-            InputProps={{
-              style: { color: 'white' }
-            }}
-          />
-          <Box display="flex" justifyContent="flex-end">
-            <Button variant="contained" color="secondary" sx={{ color: 'white' }}>
-              Dalyvauti
-            </Button>
-          </Box>
+          <Typography variant="p" component="div" color="white">
+            Žaidimo pabaiga: {startedGame.endDateTime.replace('T', ' ')}
+          </Typography>
+          {canStart && (
+            <>
+              <br />
+              <TextField
+                focused
+                color="info"
+                name="teamName"
+                label="Komandos pavadinimas"
+                fullWidth
+                sx={{ mb: 2 }}
+                InputLabelProps={{
+                  style: { color: 'white' }
+                }}
+                InputProps={{
+                  style: { color: 'white' }
+                }}
+                onChange={(event) => setTeamName(event.target.value)}
+              />
+              <Box display="flex" justifyContent="flex-end">
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  sx={{ color: 'white' }}
+                  onClick={handleSumbit}>
+                  Dalyvauti
+                </Button>
+              </Box>
+            </>
+          )}
         </CustomCard>
       </Container>
     </>

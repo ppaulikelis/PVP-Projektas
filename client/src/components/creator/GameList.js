@@ -17,15 +17,15 @@ import React, { useEffect, useState } from 'react';
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
-import PlayCircleFilledRoundedIcon from '@mui/icons-material/PlayCircleFilledRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { db } from '../../firebase';
 import { collection, getDocs, addDoc, doc, deleteDoc, query, where } from 'firebase/firestore';
 import { useAuthContext } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { CustomCard } from '../additional/CustomCard';
 import { LeftPageTitle } from '../additional/PageTitle';
-
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 export default function GameList() {
   const navigate = useNavigate();
   const { user } = useAuthContext();
@@ -33,38 +33,95 @@ export default function GameList() {
   const [selectedId, setSelectedId] = useState(-1);
   const [openDelete, setOpenDelete] = useState(false);
   const [openAdd, setOpenAdd] = useState(false);
+  const [openStart, setOpenStart] = useState(false);
   const [games, setGames] = useState([{}]);
+  const [startedGames, setStartedGames] = useState([{}]);
   const [gameName, setGameName] = useState('');
+  const [gameDateStart, setGameDateStart] = useState('');
+  const [gameDateEnd, setGameDateEnd] = useState('');
   const [gameDescription, setGameDescription] = useState('');
   const [refresh, setRefresh] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(false);
   const gamesCollectionRef = collection(db, 'games');
+  const startedGamesCollectionRef = collection(db, 'startedGames');
   const q = query(gamesCollectionRef, where('user', '==', user.uid));
+  const q1 = query(startedGamesCollectionRef, where('user', '==', user.uid));
 
-  const resetForm = () => {
+  const resetForms = () => {
     setGameName('');
     setGameDescription('');
+    setGameDateStart('');
+    setGameDateEnd('');
   };
 
   const handleGameSubmit = async () => {
+    if (gameName == '') {
+      alert('Įveskite orientacinių varžybų pavadinimą');
+      return;
+    }
     setLoading(true);
-    await addDoc(gamesCollectionRef, {
-      user: user.uid,
-      name: gameName,
-      description: gameDescription
-    });
+    try {
+      await addDoc(gamesCollectionRef, {
+        user: user.uid,
+        name: gameName,
+        description: gameDescription
+      });
+      alert('Orientacinės varžybos sėkmingai pridėtos');
+    } catch (err) {
+      alert(err.message);
+    }
     handleAddClose();
     setRefresh(refresh + 1);
-    resetForm();
+    setTab(0);
+    resetForms();
+    setLoading(false);
+  };
+
+  const handleGameStartSubmit = async () => {
+    if (gameDateStart == '' || gameDateEnd == '') {
+      alert('Užpildykite orientacinių varžybų kambario duomenis');
+      return;
+    }
+    const now = new Date().getTime();
+    const startDate = new Date(gameDateStart).getTime();
+    const endDate = new Date(gameDateEnd).getTime();
+    if (startDate >= endDate || now >= endDate) {
+      alert('Užpildykite orientacinių varžybų kambario duomenis teisingai');
+      return;
+    }
+    setLoading(true);
+    try {
+      await addDoc(startedGamesCollectionRef, {
+        user: user.uid,
+        game: selectedId,
+        startDateTime: gameDateStart,
+        endDateTime: gameDateEnd,
+        submissions: []
+      });
+      alert('Orientacinių varžybų kambarys sėkmingai sukurtas');
+    } catch (err) {
+      alert(err.message);
+    }
+    handleStartClose();
+    setRefresh(refresh + 1);
+    setTab(1);
+    resetForms();
     setLoading(false);
   };
 
   const handleGameDelete = async () => {
-    const gameDoc = doc(db, 'games', selectedId);
-    await deleteDoc(gameDoc);
+    setLoading(true);
+    try {
+      const gameDoc = doc(db, 'games', selectedId);
+      await deleteDoc(gameDoc);
+      alert('Orientacinės varžybos sėkmingai pašalintos');
+    } catch (err) {
+      alert(err.message);
+    }
     handleDeleteClose();
     setRefresh(refresh + 1);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -72,7 +129,12 @@ export default function GameList() {
       const data = await getDocs(q);
       setGames(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
+    const getStartedGames = async () => {
+      const data = await getDocs(q1);
+      setStartedGames(data.docs.map((doc) => ({ id: doc.id })));
+    };
     getGames();
+    getStartedGames();
   }, [refresh]);
 
   const handleDeleteOpen = (id) => {
@@ -94,6 +156,15 @@ export default function GameList() {
 
   const handleTabs = (e, value) => {
     setTab(value);
+  };
+
+  const handleStartOpen = (id) => {
+    setSelectedId(id);
+    setOpenStart(true);
+  };
+
+  const handleStartClose = () => {
+    setOpenStart(false);
   };
 
   return (
@@ -165,19 +236,27 @@ export default function GameList() {
                         justifyContent: 'right',
                         alignItems: 'center'
                       }}>
-                      <IconButton sx={{ color: '#008724' }}>
-                        <PlayCircleFilledRoundedIcon sx={{ fontSize: 32 }} />
-                      </IconButton>
-                      <IconButton
-                        onClick={() => navigate('game/' + game.id)}
-                        sx={{ color: '#9540DF' }}>
-                        <EditIcon sx={{ fontSize: 32 }} />
-                      </IconButton>
-                      <IconButton
-                        sx={{ color: '#e00000' }}
+                      <Button
+                        variant="contained"
+                        color="success"
+                        sx={{ ml: '10px', borderRadius: '69px' }}
+                        onClick={() => handleStartOpen(game.id)}>
+                        <PlayArrowIcon />
+                      </Button>
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        sx={{ ml: '10px', borderRadius: '69px' }}
+                        onClick={() => navigate('game/' + game.id)}>
+                        <EditIcon sx={{ color: 'white' }} />
+                      </Button>
+                      <Button
+                        variant="contained"
+                        color="error"
+                        sx={{ ml: '10px', borderRadius: '69px' }}
                         onClick={() => handleDeleteOpen(game.id)}>
-                        <DeleteRoundedIcon sx={{ fontSize: 32 }} />
-                      </IconButton>
+                        <DeleteRoundedIcon />
+                      </Button>
                     </Box>
                   </Box>
                 </CustomCard>
@@ -195,7 +274,39 @@ export default function GameList() {
             )}
           </TabPanel>
           <TabPanel value={tab} index={1}>
-            Tab2
+            <br />
+            {startedGames.map((startedGame) => (
+              <CustomCard key={startedGame.id} background={'#55B0D5'}>
+                <Box display="flex">
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flex: '1',
+                      justifyContent: 'left',
+                      alignItems: 'center'
+                    }}>
+                    <Typography variant="h5" component="div" align="left" color="#ffffff">
+                      {startedGame.id}
+                    </Typography>
+                  </Box>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flex: '1',
+                      justifyContent: 'right',
+                      alignItems: 'center'
+                    }}>
+                    <Button
+                      variant="contained"
+                      color="success"
+                      sx={{ ml: '10px', borderRadius: '69px' }}
+                      onClick={() => navigator.clipboard.writeText(startedGame.id)}>
+                      <ContentCopyIcon />
+                    </Button>
+                  </Box>
+                </Box>
+              </CustomCard>
+            ))}
           </TabPanel>
         </CustomCard>
       </Container>
@@ -226,8 +337,13 @@ export default function GameList() {
             <Button color="primary" variant="contained" onClick={handleDeleteClose}>
               Atšaukti
             </Button>
-            <Button color="error" variant="contained" autoFocus onClick={handleGameDelete}>
-              Pašalinti
+            <Button
+              color="error"
+              variant="contained"
+              autoFocus
+              onClick={handleGameDelete}
+              disabled={loading}>
+              {loading ? <CircularProgress color="secondary" /> : 'Pašalinti'}
             </Button>
           </DialogActions>
         </Box>
@@ -272,6 +388,51 @@ export default function GameList() {
               autoFocus
               sx={{ color: 'white' }}
               onClick={handleGameSubmit}
+              disabled={loading}>
+              {loading ? <CircularProgress color="secondary" /> : 'Pridėti'}
+            </Button>
+          </DialogActions>
+        </Box>
+      </Dialog>
+      <Dialog open={openStart} onClose={handleStartClose}>
+        <Box p={1}>
+          <DialogTitle>
+            <Typography variant="h5" component="div" align="center">
+              Pridėti orientacinių varžybų kambarį
+            </Typography>
+          </DialogTitle>
+          <DialogContent>
+            <TextField
+              fullWidth
+              label="Orientacinių varžybų pradžia"
+              focused
+              margin="dense"
+              type="datetime-local"
+              onChange={(event) => {
+                setGameDateStart(event.target.value);
+              }}
+            />
+            <TextField
+              fullWidth
+              label="Orientacinių varžybų pabaiga"
+              autoFocus
+              margin="dense"
+              type="datetime-local"
+              focused
+              onChange={(event) => {
+                setGameDateEnd(event.target.value);
+              }}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button color="primary" variant="contained" onClick={handleStartClose}>
+              Atšaukti
+            </Button>
+            <Button
+              color="secondary"
+              variant="contained"
+              sx={{ color: 'white' }}
+              onClick={handleGameStartSubmit}
               disabled={loading}>
               {loading ? <CircularProgress color="secondary" /> : 'Pridėti'}
             </Button>
