@@ -35,15 +35,15 @@ export default function GameEnded(props) {
               </Typography>
               {startedGame.submissions.length > 0 && <br />}
               {generateParticipantsList().map((participant) => (
-                <CustomCard key={participant.teamName}>
+                <CustomCard key={participant.teamName} background={'#D1D1D1'}>
                   <Box display="flex">
                     <Box display="flex" flexGrow={2}>
-                      <Typography variant="h5" component="div" color="white">
+                      <Typography variant="h5" component="div" color="#1176AF">
                         {participant.teamName}
                       </Typography>
                     </Box>
                     <Box display="flex" flexGrow={2} justifyContent="right">
-                      <Typography variant="h5" component="div" color="white" align="right">
+                      <Typography variant="h5" component="div" color="#1176AF" align="right">
                         {participant.totalPoints}
                       </Typography>
                     </Box>

@@ -204,7 +204,7 @@ export default function GameList() {
                 }
               })
               .map((game) => (
-                <CustomCard key={game.id} background={'#55B0D5'}>
+                <CustomCard key={game.id} background={'#D1D1D1'}>
                   <Box display="flex">
                     <Box
                       sx={{
@@ -270,7 +270,7 @@ export default function GameList() {
           <TabPanel value={tab} index={1}>
             <br />
             {startedGames.map((startedGame) => (
-              <CustomCard key={startedGame.id} background={'#55B0D5'}>
+              <CustomCard key={startedGame.id} background={'#D1D1D1'}>
                 <Box display="flex">
                   <Box
                     sx={{
@@ -279,7 +279,7 @@ export default function GameList() {
                       justifyContent: 'left',
                       alignItems: 'center'
                     }}>
-                    <Typography variant="h5" component="div" align="left" color="#ffffff">
+                    <Typography variant="h5" component="div" align="left" color="#1176AF">
                       {startedGame.id}
                     </Typography>
                   </Box>
