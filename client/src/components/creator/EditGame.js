@@ -210,8 +210,11 @@ export default function EditGame() {
           />
 
           <Box display="flex" flexDirection={'column'} alignItems="center">
-            <Typography component={'div'} variant="h7" color="#ffffff">
+            <Typography component={'div'} variant="h7" color="#1176AF">
               Sukurkite klausimus orientacinėms varžyboms spausdami + mygtuką ekrano dešinėje
+            </Typography>
+            <Typography component={'div'} variant="h7" color="#1176AF">
+              Atspausdinkite klausimų užuominas ir kodus spausdami mėlyną mygtuką ekrano dešinėje
             </Typography>
           </Box>
 
@@ -236,7 +239,7 @@ export default function EditGame() {
           <Box display="flex" flexDirection={'column'} alignItems="center">
             <br />
             <Typography component={'div'} variant="h7" color="#1176AF">
-              *Norėdami išsaugoti pakeitimus nepamirškite paspausti žalio mygtuko ekrano dešinėje
+              Norėdami išsaugoti pakeitimus nepamirškite paspausti žalio mygtuko ekrano dešinėje
             </Typography>
           </Box>
         </CustomCard>
