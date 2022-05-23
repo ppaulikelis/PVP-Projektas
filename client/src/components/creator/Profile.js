@@ -28,7 +28,7 @@ export default function Profile() {
             }}>
             <img alt={'logo'} src={'/logo512.png'} width={'200px'} />
             <Typography variant="h5" component="div" color="black" sx={{ mb: 2 }}>
-              Erikas Goriačevskis
+              User
             </Typography>
             <Typography variant="h6" component="div" color="gray">
               Kaunas
@@ -36,11 +36,11 @@ export default function Profile() {
           </Box>
         </CustomCard>
         <CustomCard background="white">
-          <ProfileField fieldName="Vardas" fieldValue="Erikas" />
+          <ProfileField fieldName="Vardas" fieldValue="User" />
           <hr />
-          <ProfileField fieldName="Pavardė" fieldValue="Goriačevskis" />
+          <ProfileField fieldName="Pavardė" fieldValue="User" />
           <hr />
-          <ProfileField fieldName="El. paštas" fieldValue="erikas.goriacevskis@gmail.com" />
+          <ProfileField fieldName="El. paštas" fieldValue="user@gmail.com" />
           <hr />
           <ProfileField fieldName="Mokykla" fieldValue="Kauno KTU gimnazija" />
           <hr />

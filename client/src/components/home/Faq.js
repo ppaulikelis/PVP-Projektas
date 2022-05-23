@@ -169,7 +169,7 @@ export default function Faq() {
               {topic.questions.map((question) => (
                 <Accordion key={question.question}>
                   <AccordionSummary
-                    expandIcon={<ExpandMoreIcon sx={{ color: '353535' }} />}
+                    expandIcon={<ExpandMoreIcon sx={{ color: '#353535' }} />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                     sx={{

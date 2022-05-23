@@ -37,7 +37,12 @@ export default function Subscription() {
                 sx={{ color: 'black', fontWeight: 400, fontSize: 80 }}>
                 75€/mėn
               </Typography>
-              <Typography variant="p" component="div" color="black" align="left">
+              <Typography
+                variant="p"
+                component="div"
+                color="black"
+                align="left"
+                sx={{ fontStyle: 'italic' }}>
                 *Prenumeraciją bet kuriuo laikotarpiu galima nutraukti
               </Typography>
               <br />

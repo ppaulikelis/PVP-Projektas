@@ -54,7 +54,10 @@ export default function AboutUs() {
                 flexDirection: 'column'
               }}>
               <Typography variant="p" component="div" color="black">
-                ORIS - orientacinių varžybų ruošimo ir organizavimo informacinė sistema. Ši sistema
+                <Box fontWeight="600" display="inline" sx={{ color: '#1176AF' }}>
+                  ORIS
+                </Box>
+                - orientacinių varžybų ruošimo ir organizavimo informacinė sistema. Ši sistema
                 sujungia švietimą ir aktyvų laisvalaikį. ORIS buvo sukurta mokykloms, siekiant
                 skatinti mokinių žinių pritaikomumą, smalsumą bei fizinį aktyvumą. Tai platforma,
                 kurioje galima kurti bei žaisti varžybas individualiai bei komandose. ORIS tikslas -

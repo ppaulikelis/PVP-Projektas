@@ -28,10 +28,16 @@ export default function Lobby(props) {
           </Typography>
           <br />
           <Typography variant="p" component="div">
-            Žaidimo pradžia: {startedGame.startDateTime.replace('T', ' ')}
+            <Box fontWeight="600" display="inline">
+              Žaidimo pradžia:
+            </Box>
+            {startedGame.startDateTime.replace('T', ' ')}
           </Typography>
           <Typography variant="p" component="div">
-            Žaidimo pabaiga: {startedGame.endDateTime.replace('T', ' ')}
+            <Box fontWeight="600" display="inline">
+              Žaidimo pabaiga:
+            </Box>
+            {startedGame.endDateTime.replace('T', ' ')}
           </Typography>
           {canStart && (
             <>
@@ -48,7 +54,8 @@ export default function Lobby(props) {
                 <Button
                   variant="contained"
                   color="secondary"
-                  sx={{ color: 'white' }}
+                  fullWidth
+                  sx={{ color: 'white', p: 2 }}
                   onClick={handleSumbit}>
                   Dalyvauti
                 </Button>
