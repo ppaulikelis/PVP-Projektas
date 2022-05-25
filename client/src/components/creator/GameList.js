@@ -347,7 +347,10 @@ export default function GameList() {
                       <Button
                         variant="contained"
                         sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#008724' }}
-                        onClick={() => navigator.clipboard.writeText(startedGame.id)}>
+                        onClick={() => {
+                          navigator.clipboard.writeText(startedGame.id);
+                          alert('Orientacinių varžybų kambario kodas nukopijuotas');
+                        }}>
                         <ContentCopyIcon />
                       </Button>
                     </Box>
