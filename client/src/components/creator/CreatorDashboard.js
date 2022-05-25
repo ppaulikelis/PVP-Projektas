@@ -6,6 +6,7 @@ import EditGame from './EditGame';
 import GameList from './GameList';
 import Profile from './Profile';
 import Background2 from '../additional/Background2';
+import Results from './Results';
 
 export default function CreatorDashboard() {
   const { user } = useAuthContext();
@@ -24,9 +25,10 @@ export default function CreatorDashboard() {
         <Routes>
           {user ? (
             <>
-              <Route path="" element={<GameList />} />{' '}
+              <Route path="" element={<GameList />} />
               <Route path="/game/:id" element={<EditGame />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/results" element={<Results />} />
             </>
           ) : (
             <></>

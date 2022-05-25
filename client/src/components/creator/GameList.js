@@ -298,51 +298,62 @@ export default function GameList() {
           </TabPanel>
           <TabPanel value={tab} index={1}>
             <br />
-            {startedGames.map((startedGame) => (
-              <CustomCard key={startedGame.id} background={'#D1D1D1'}>
-                <Box display="flex">
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      flex: '1',
-                      alignItems: 'left',
-                      flexDirection: 'column'
-                    }}>
-                    <Typography
-                      variant="h5"
-                      component="div"
-                      align="left"
-                      color="#1176AF"
-                      fontWeight={'bold'}>
-                      {startedGame.startedGameName}
-                    </Typography>
-                    <Typography variant="p" component="div" align="left" color="#1176AF">
-                      Orientacinių varžybų pavadinimas: {startedGame.gameName}
-                    </Typography>
-                    <Typography variant="p" component="div" align="left" color="#1176AF">
-                      Žaidimo pradžia: {startedGame.startDateTime.replace('T', ' ')}
-                    </Typography>
-                    <Typography variant="p" component="div" align="left" color="#1176AF">
-                      Žaidimo pabaiga: {startedGame.endDateTime.replace('T', ' ')}
-                    </Typography>
+            {startedGames
+              .filter((game) => {
+                if (searchTerm === '') {
+                  return game;
+                } else if (
+                  game.startedGameName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  game.gameName.toLowerCase().includes(searchTerm.toLowerCase())
+                ) {
+                  return game;
+                }
+              })
+              .map((startedGame) => (
+                <CustomCard key={startedGame.id} background={'#D1D1D1'}>
+                  <Box display="flex">
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        flex: '1',
+                        alignItems: 'left',
+                        flexDirection: 'column'
+                      }}>
+                      <Typography
+                        variant="h5"
+                        component="div"
+                        align="left"
+                        color="#1176AF"
+                        fontWeight={'bold'}>
+                        {startedGame.startedGameName}
+                      </Typography>
+                      <Typography variant="p" component="div" align="left" color="#1176AF">
+                        Orientacinių varžybų pavadinimas: {startedGame.gameName}
+                      </Typography>
+                      <Typography variant="p" component="div" align="left" color="#1176AF">
+                        Žaidimo pradžia: {startedGame.startDateTime.replace('T', ' ')}
+                      </Typography>
+                      <Typography variant="p" component="div" align="left" color="#1176AF">
+                        Žaidimo pabaiga: {startedGame.endDateTime.replace('T', ' ')}
+                      </Typography>
+                    </Box>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        flex: '1',
+                        justifyContent: 'right',
+                        alignItems: 'flex-end'
+                      }}>
+                      <Button
+                        variant="contained"
+                        sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#008724' }}
+                        onClick={() => navigator.clipboard.writeText(startedGame.id)}>
+                        <ContentCopyIcon />
+                      </Button>
+                    </Box>
                   </Box>
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      flex: '1',
-                      justifyContent: 'right',
-                      alignItems: 'flex-end'
-                    }}>
-                    <Button
-                      variant="contained"
-                      sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#008724' }}
-                      onClick={() => navigator.clipboard.writeText(startedGame.id)}>
-                      <ContentCopyIcon />
-                    </Button>
-                  </Box>
-                </Box>
-              </CustomCard>
-            ))}
+                </CustomCard>
+              ))}
             {startedGames.length === 0 && (
               <Box display="flex" flexDirection={'column'} alignItems="center">
                 <img src="/logo_komposas2_square.png" width={'450px'} />
