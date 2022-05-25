@@ -257,11 +257,11 @@ export default function GameList() {
               ))}
             {games.length === 0 && (
               <Box display="flex" flexDirection={'column'} alignItems="center">
-                <img src="/logo_white.png" width={'450px'} />
-                <Typography component={'div'} variant="h5" color="#ffffff">
+                <img src="/logo_komposas2_square.png" width={'450px'} />
+                <Typography component={'div'} variant="h5">
                   Orientacinių nėra
                 </Typography>
-                <Typography component={'div'} variant="h6" color="#ffffff">
+                <Typography component={'div'} variant="h6">
                   Sukurkite pirmas savo orientacines varžybas spausdami + mygtuką ekrano dešinėje
                 </Typography>
               </Box>
