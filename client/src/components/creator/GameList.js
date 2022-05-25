@@ -51,16 +51,6 @@ export default function GameList() {
   const q1 = query(startedGamesCollectionRef, where('user', '==', user.uid));
 
   useEffect(() => {
-    // const getGames = async () => {
-    //   const data = await getDocs(q);
-    //   setGames(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    // };
-    // const getStartedGames = async () => {
-    //   const data = await getDocs(q1);
-    //   setStartedGames(data.docs.map((doc) => ({ id: doc.id })));
-    // };
-    // getGames();
-    // getStartedGames();
     getDocs(q).then((res1) => {
       const gamesFromResponse = res1.docs.map((doc) => ({ name: doc.data().name, id: doc.id }));
       setGames(gamesFromResponse);
