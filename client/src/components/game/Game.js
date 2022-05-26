@@ -30,8 +30,8 @@ export default function Game(props) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const emptyAnswersArray = new Array(game.questions.length).fill(0).map(() => ({
-      questionID: -1,
+    const emptyAnswersArray = new Array(game.questions.length).fill(0).map((answer, index) => ({
+      question: game.questions[index].question,
       answer: '',
       points: 0
     }));
@@ -64,7 +64,7 @@ export default function Game(props) {
       points = game.questions[id].worth;
     }
     const newAnswer = {
-      questionID: id,
+      question: game.questions[id].question,
       answer: value,
       points: points
     };
