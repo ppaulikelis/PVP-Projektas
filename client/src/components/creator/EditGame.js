@@ -20,6 +20,7 @@ import LocalPrintshopRoundedIcon from '@mui/icons-material/LocalPrintshopRounded
 import jsPDF from 'jspdf';
 import QRCode from 'qrcode';
 import CircularProgress from '@mui/material/CircularProgress';
+import Tooltip from '@mui/material/Tooltip';
 
 export default function EditGame() {
   const { id } = useParams();
@@ -243,59 +244,65 @@ export default function EditGame() {
             </Typography>
           </Box>
         </CustomCard>
-        <IconButton
-          onClick={handleSumbit}
-          disabled={loading}
-          sx={{
-            position: 'fixed',
-            right: 40,
-            bottom: 230,
-            backgroundColor: '#517300',
-            '&:hover': {
-              filter: 'brightness(85%)',
-              backgroundColor: '#517300'
-            },
-            height: '75px',
-            width: '75px'
-          }}>
-          {loading ? (
-            <CircularProgress color="secondary" />
-          ) : (
-            <SaveRoundedIcon sx={{ color: '#ffffff', height: '50px', width: '50px' }} />
-          )}
-        </IconButton>
-        <IconButton
-          onClick={createPDF}
-          sx={{
-            position: 'fixed',
-            right: 40,
-            bottom: 135,
-            backgroundColor: '#55B0D5',
-            '&:hover': {
-              filter: 'brightness(85%)',
-              backgroundColor: '#55B0D5'
-            },
-            height: '75px',
-            width: '75px'
-          }}>
-          <LocalPrintshopRoundedIcon sx={{ color: '#ffffff', height: '50px', width: '50px' }} />
-        </IconButton>
-        <IconButton
-          onClick={handleAddQuestion}
-          sx={{
-            position: 'fixed',
-            right: 40,
-            bottom: 40,
-            backgroundColor: '#FFB30F',
-            '&:hover': {
-              filter: 'brightness(85%)',
-              backgroundColor: '#FFB30F'
-            },
-            height: '75px',
-            width: '75px'
-          }}>
-          <AddRoundedIcon sx={{ color: '#ffffff', height: '50px', width: '50px' }} />
-        </IconButton>
+        <Tooltip title="Išsaugoti pakeitimus" placement="left">
+          <IconButton
+            onClick={handleSumbit}
+            disabled={loading}
+            sx={{
+              position: 'fixed',
+              right: 40,
+              bottom: 230,
+              backgroundColor: '#517300',
+              '&:hover': {
+                filter: 'brightness(85%)',
+                backgroundColor: '#517300'
+              },
+              height: '75px',
+              width: '75px'
+            }}>
+            {loading ? (
+              <CircularProgress color="secondary" />
+            ) : (
+              <SaveRoundedIcon sx={{ color: '#ffffff', height: '50px', width: '50px' }} />
+            )}
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Sukurti užuominų PDF failą" placement="left">
+          <IconButton
+            onClick={createPDF}
+            sx={{
+              position: 'fixed',
+              right: 40,
+              bottom: 135,
+              backgroundColor: '#55B0D5',
+              '&:hover': {
+                filter: 'brightness(85%)',
+                backgroundColor: '#55B0D5'
+              },
+              height: '75px',
+              width: '75px'
+            }}>
+            <LocalPrintshopRoundedIcon sx={{ color: '#ffffff', height: '50px', width: '50px' }} />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Pridėti naują klausimą" placement="left">
+          <IconButton
+            onClick={handleAddQuestion}
+            sx={{
+              position: 'fixed',
+              right: 40,
+              bottom: 40,
+              backgroundColor: '#FFB30F',
+              '&:hover': {
+                filter: 'brightness(85%)',
+                backgroundColor: '#FFB30F'
+              },
+              height: '75px',
+              width: '75px'
+            }}>
+            <AddRoundedIcon sx={{ color: '#ffffff', height: '50px', width: '50px' }} />
+          </IconButton>
+        </Tooltip>
       </Container>
     </>
   );
@@ -337,9 +344,11 @@ const QuestionForm = (props) => {
             </Typography>
           </Box>
           <Box display={'flex'} flexGrow={1} alignItems={'center'} justifyContent={'right'}>
-            <IconButton onClick={() => handleDelete(id)} sx={{ color: '#e00000' }}>
-              <DeleteRoundedIcon sx={{ fontSize: 30 }} />
-            </IconButton>
+            <Tooltip title="Ištrinti klausimą" placement="left">
+              <IconButton onClick={() => handleDelete(id)} sx={{ color: '#e00000' }}>
+                <DeleteRoundedIcon sx={{ fontSize: 30 }} />
+              </IconButton>
+            </Tooltip>
           </Box>
         </Box>
         <TextField

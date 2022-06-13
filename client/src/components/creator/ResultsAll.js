@@ -48,7 +48,7 @@ export default function ResultsAll() {
 
   return (
     <>
-      <LeftPageTitle>Orientacinės varžybų rezultatai</LeftPageTitle>
+      <LeftPageTitle>Orientacinių varžybų rezultatai</LeftPageTitle>
       <Container maxWidth="lg" sx={{ pb: 5 }}>
         <CustomCard background="white">
           <Typography variant="h5" component="div" align="left" color="#1176AF" fontWeight={'bold'}>

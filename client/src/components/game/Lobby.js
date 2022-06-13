@@ -41,6 +41,7 @@ export default function Lobby(props) {
                 name="teamName"
                 label="Komandos pavadinimas"
                 fullWidth
+                autoFocus
                 sx={{ mb: 2 }}
                 onChange={(event) => setTeamName(event.target.value)}
               />

@@ -26,6 +26,7 @@ import { useNavigate } from 'react-router-dom';
 import { CustomCard } from '../additional/CustomCard';
 import { LeftPageTitle } from '../additional/PageTitle';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import Tooltip from '@mui/material/Tooltip';
 
 export default function GameList() {
   const navigate = useNavigate();
@@ -260,26 +261,32 @@ export default function GameList() {
                         justifyContent: 'right',
                         alignItems: 'center'
                       }}>
-                      <Button
-                        variant="contained"
-                        sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#008724' }}
-                        onClick={() => handleStartOpen(game.id)}>
-                        <PlayArrowIcon />
-                      </Button>
-                      <Button
-                        variant="contained"
-                        color="secondary"
-                        sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#9540DF' }}
-                        onClick={() => navigate('game/' + game.id)}>
-                        <EditIcon sx={{ color: 'white' }} />
-                      </Button>
-                      <Button
-                        variant="contained"
-                        color="error"
-                        sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#e00000' }}
-                        onClick={() => handleDeleteOpen(game.id)}>
-                        <DeleteRoundedIcon />
-                      </Button>
+                      <Tooltip title="Pradėti" placement="top">
+                        <Button
+                          variant="contained"
+                          sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#008724' }}
+                          onClick={() => handleStartOpen(game.id)}>
+                          <PlayArrowIcon />
+                        </Button>
+                      </Tooltip>
+                      <Tooltip title="Redaguoti" placement="top">
+                        <Button
+                          variant="contained"
+                          color="secondary"
+                          sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#9540DF' }}
+                          onClick={() => navigate('game/' + game.id)}>
+                          <EditIcon sx={{ color: 'white' }} />
+                        </Button>
+                      </Tooltip>
+                      <Tooltip title="Pašalinti" placement="top">
+                        <Button
+                          variant="contained"
+                          color="error"
+                          sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#e00000' }}
+                          onClick={() => handleDeleteOpen(game.id)}>
+                          <DeleteRoundedIcon />
+                        </Button>
+                      </Tooltip>
                     </Box>
                   </Box>
                 </CustomCard>
@@ -344,15 +351,17 @@ export default function GameList() {
                         justifyContent: 'right',
                         alignItems: 'flex-end'
                       }}>
-                      <Button
-                        variant="contained"
-                        sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#008724' }}
-                        onClick={() => {
-                          navigator.clipboard.writeText(startedGame.id);
-                          alert('Orientacinių varžybų kambario kodas nukopijuotas');
-                        }}>
-                        <ContentCopyIcon />
-                      </Button>
+                      <Tooltip title="Kopijuoti prisijungimo kodą" placement="top">
+                        <Button
+                          variant="contained"
+                          sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#008724' }}
+                          onClick={() => {
+                            navigator.clipboard.writeText(startedGame.id);
+                            alert('Orientacinių varžybų kambario kodas nukopijuotas');
+                          }}>
+                          <ContentCopyIcon />
+                        </Button>
+                      </Tooltip>
                     </Box>
                   </Box>
                 </CustomCard>
@@ -372,22 +381,24 @@ export default function GameList() {
           </TabPanel>
         </CustomCard>
       </Container>
-      <IconButton
-        onClick={handleAddOpen}
-        sx={{
-          position: 'fixed',
-          right: 40,
-          bottom: 40,
-          backgroundColor: '#FFB30F',
-          '&:hover': {
-            filter: 'brightness(85%)',
-            backgroundColor: '#FFB30F'
-          },
-          height: '75px',
-          width: '75px'
-        }}>
-        <AddRoundedIcon sx={{ color: '#ffffff', height: '50px', width: '50px' }} />
-      </IconButton>
+      <Tooltip title="Sukurti naujas varžybas" placement="top">
+        <IconButton
+          onClick={handleAddOpen}
+          sx={{
+            position: 'fixed',
+            right: 40,
+            bottom: 40,
+            backgroundColor: '#FFB30F',
+            '&:hover': {
+              filter: 'brightness(85%)',
+              backgroundColor: '#FFB30F'
+            },
+            height: '75px',
+            width: '75px'
+          }}>
+          <AddRoundedIcon sx={{ color: '#ffffff', height: '50px', width: '50px' }} />
+        </IconButton>
+      </Tooltip>
       <Dialog open={openDelete} onClose={handleDeleteClose}>
         <Box p={1}>
           <DialogTitle>

@@ -22,6 +22,7 @@ import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
+import Tooltip from '@mui/material/Tooltip';
 
 export default function Results() {
   const navigate = useNavigate();
@@ -95,7 +96,7 @@ export default function Results() {
 
   return (
     <>
-      <LeftPageTitle>Orientacinės varžybų rezultatai</LeftPageTitle>
+      <LeftPageTitle>Orientacinių varžybų rezultatai</LeftPageTitle>
       <Container maxWidth="lg" sx={{ pb: 5 }}>
         <CustomCard background="white">
           <TextField
@@ -167,28 +168,34 @@ export default function Results() {
                         justifyContent: 'right',
                         alignItems: 'flex-end'
                       }}>
-                      <Button
-                        variant="contained"
-                        sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#008724' }}
-                        onClick={() => navigate('all/' + startedGame.id)}>
-                        <VisibilityIcon />
-                      </Button>
-                      <Button
-                        variant="contained"
-                        sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#9540DF' }}
-                        onClick={() => {
-                          navigator.clipboard.writeText(startedGame.id);
-                          alert('Orientacinių varžybų kambario kodas nukopijuotas');
-                        }}>
-                        <ContentCopyIcon />
-                      </Button>
-                      <Button
-                        variant="contained"
-                        color="error"
-                        sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#e00000' }}
-                        onClick={() => handleDeleteOpen(startedGame.id)}>
-                        <DeleteRoundedIcon />
-                      </Button>
+                      <Tooltip title="Peržiūrėti rezultatus" placement="top">
+                        <Button
+                          variant="contained"
+                          sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#008724' }}
+                          onClick={() => navigate('all/' + startedGame.id)}>
+                          <VisibilityIcon />
+                        </Button>
+                      </Tooltip>
+                      <Tooltip title="Kopijuoti prisijungimo kodą" placement="top">
+                        <Button
+                          variant="contained"
+                          sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#9540DF' }}
+                          onClick={() => {
+                            navigator.clipboard.writeText(startedGame.id);
+                            alert('Orientacinių varžybų kambario kodas nukopijuotas');
+                          }}>
+                          <ContentCopyIcon />
+                        </Button>
+                      </Tooltip>
+                      <Tooltip title="Pašalinti kambarį" placement="top">
+                        <Button
+                          variant="contained"
+                          color="error"
+                          sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#e00000' }}
+                          onClick={() => handleDeleteOpen(startedGame.id)}>
+                          <DeleteRoundedIcon />
+                        </Button>
+                      </Tooltip>
                     </Box>
                   </Box>
                 </CustomCard>
