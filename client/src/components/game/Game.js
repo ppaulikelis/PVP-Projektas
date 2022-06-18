@@ -86,17 +86,17 @@ export default function Game(props) {
           {game.questions.map((question) => (
             <Accordion key={question.id}>
               <AccordionSummary
-                expandIcon={<ExpandMoreIcon sx={{ color: 'white' }} />}
+                expandIcon={<ExpandMoreIcon sx={{ color: '#353535' }} />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
                 sx={{
-                  backgroundColor: '#55B0D5'
+                  backgroundColor: '#F3F3F3'
                 }}>
-                <Typography sx={{ color: 'white' }}>Klausimas {question.id + 1}</Typography>
+                <Typography sx={{ color: '#1176AF' }}>Klausimas {question.id + 1}</Typography>
               </AccordionSummary>
               <AccordionDetails
                 sx={{
-                  backgroundColor: '#2997D6'
+                  backgroundColor: '#55B0D5'
                 }}>
                 {question.showHint && !unlocks.includes(question.id) ? (
                   <LockedQuestion question={question} handleUnlocksChange={handleUnlocksChange} />
@@ -130,7 +130,8 @@ export default function Game(props) {
             <Button
               variant="contained"
               color="secondary"
-              sx={{ color: 'white' }}
+              fullWidth
+              sx={{ color: 'white', p: 2 }}
               onClick={handleSubmit}
               disabled={loading}>
               {loading ? <CircularProgress color="secondary" /> : 'Baigti'}
@@ -270,7 +271,11 @@ const Timmer = (props) => {
   });
 
   return (
-    <Typography component={'div'} variant="p" align="right">
+    <Typography
+      component={'div'}
+      variant="p"
+      align="center"
+      sx={{ color: '#1176AF', fontSize: 25, fontWeight: 'bold' }}>
       Likęs laikas - {timer}
     </Typography>
   );
