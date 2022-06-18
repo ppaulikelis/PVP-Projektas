@@ -29,13 +29,13 @@ export default function Lobby(props) {
           <br />
           <Typography variant="p" component="div">
             <Box fontWeight="600" display="inline">
-              Žaidimo pradžia:
+              Žaidimo pradžia:&nbsp;
             </Box>
             {startedGame.startDateTime.replace('T', ' ')}
           </Typography>
           <Typography variant="p" component="div">
             <Box fontWeight="600" display="inline">
-              Žaidimo pabaiga:
+              Žaidimo pabaiga:&nbsp;
             </Box>
             {startedGame.endDateTime.replace('T', ' ')}
           </Typography>

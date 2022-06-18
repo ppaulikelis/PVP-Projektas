@@ -37,7 +37,12 @@ export default function Subscription() {
                 sx={{ color: 'black', fontWeight: 400, fontSize: 80 }}>
                 75€/mėn
               </Typography>
-              <Typography variant="p" component="div" color="black" align="left">
+              <Typography
+                variant="p"
+                component="div"
+                color="black"
+                align="left"
+                sx={{ fontStyle: 'italic' }}>
                 *Prenumeraciją bet kuriuo laikotarpiu galima nutraukti
               </Typography>
               <br />
@@ -47,7 +52,15 @@ export default function Subscription() {
               </Typography>
               <br />
               <Typography variant="p" component="div" color="black" align="left">
-                Daugiau informacijos &quot;D.U.K&quot; ir &quot;Kontaktai&quot; skiltyje
+                Daugiau informacijos&nbsp;
+                <Box sx={{ color: '#1176AF' }} display="inline" fontWeight="600">
+                  &quot;D.U.K&quot;&nbsp;
+                </Box>
+                ir&nbsp;
+                <Box sx={{ color: '#1176AF' }} display="inline" fontWeight="600">
+                  &quot;Kontaktai&quot;&nbsp;
+                </Box>
+                skiltyje
               </Typography>
             </Box>
           </Box>

@@ -35,13 +35,22 @@ export default function Contacts() {
               </Typography>
               <br />
               <Typography variant="p" component="div" color="black" align="left">
-                Adresas: Studentų g. 50, Kaunas LT-51368
+                <Box fontWeight="600" display="inline">
+                  Adresas:&nbsp;
+                </Box>
+                Studentų g. 50, Kaunas LT-51368
               </Typography>
               <Typography variant="p" component="div" color="black">
-                Elektroninis paštas: pvp.projektas@pvp.pvp
+                <Box fontWeight="600" display="inline">
+                  Elektroninis paštas:&nbsp;
+                </Box>
+                pvp.projektas@pvp.pvp
               </Typography>
               <Typography variant="p" component="div" color="black">
-                Telefonas: +37061111111
+                <Box fontWeight="600" display="inline">
+                  Telefonas:&nbsp;
+                </Box>
+                +37061111111
               </Typography>
             </Box>
           </Box>
