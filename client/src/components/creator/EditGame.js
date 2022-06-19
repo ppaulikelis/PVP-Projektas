@@ -21,6 +21,7 @@ import jsPDF from 'jspdf';
 import QRCode from 'qrcode';
 import CircularProgress from '@mui/material/CircularProgress';
 import Tooltip from '@mui/material/Tooltip';
+import { useSnackbar } from 'notistack';
 
 export default function EditGame() {
   const { id } = useParams();
@@ -28,6 +29,7 @@ export default function EditGame() {
   const [gameDescription, setGameDescription] = useState('');
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     const getGame = async () => {
@@ -53,9 +55,9 @@ export default function EditGame() {
         questions: questions
       };
       await updateDoc(gameDoc, newFields);
-      alert('Orientacinės varžybos sėkmingai atnaujintos');
+      enqueueSnackbar('Duomenys sėkmingai išsaugoti!', { variant: 'success' });
     } catch (err) {
-      alert(err.message);
+      enqueueSnackbar('Įvyko klaida!', { variant: 'error' });
     }
     setLoading(false);
   };

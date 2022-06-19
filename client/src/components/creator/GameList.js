@@ -27,6 +27,7 @@ import { CustomCard } from '../additional/CustomCard';
 import { LeftPageTitle } from '../additional/PageTitle';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import Tooltip from '@mui/material/Tooltip';
+import { useSnackbar } from 'notistack';
 
 export default function GameList() {
   const navigate = useNavigate();
@@ -50,6 +51,7 @@ export default function GameList() {
   const startedGamesCollectionRef = collection(db, 'startedGames');
   const q = query(gamesCollectionRef, where('user', '==', user.uid));
   const q1 = query(startedGamesCollectionRef, where('user', '==', user.uid));
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     getDocs(q).then((res1) => {
@@ -95,11 +97,13 @@ export default function GameList() {
 
   const handleGameSubmit = async () => {
     if (gameName == '') {
-      alert('Įveskite orientacinių varžybų pavadinimą');
+      enqueueSnackbar('Įveskite orientacinių varžybų pavadinimą', { variant: 'error' });
       return;
     }
     if (games.find((game) => game.name == gameName) != null) {
-      alert('Orientacinės varžybos su tokiu pavadinimu jau egzistuoja');
+      enqueueSnackbar('Orientacinės varžybos su tokiu pavadinimu jau egzistuoja', {
+        variant: 'error'
+      });
       return;
     }
     setLoading(true);
@@ -109,9 +113,9 @@ export default function GameList() {
         name: gameName,
         description: gameDescription
       });
-      alert('Orientacinės varžybos sėkmingai pridėtos');
+      enqueueSnackbar('Orientacinės varžybos sėkmingai pridėtos', { variant: 'success' });
     } catch (err) {
-      alert(err.message);
+      enqueueSnackbar('Įvyko klaida!', { variant: 'error' });
     }
     handleAddClose();
     setRefresh(refresh + 1);
@@ -122,14 +126,16 @@ export default function GameList() {
 
   const handleGameStartSubmit = async () => {
     if (gameDateStart == '' || gameDateEnd == '' || startedGameName == '') {
-      alert('Užpildykite orientacinių varžybų kambario duomenis');
+      enqueueSnackbar('Užpildykite orientacinių varžybų kambario duomenis', { variant: 'error' });
       return;
     }
     const now = new Date().getTime();
     const startDate = new Date(gameDateStart).getTime();
     const endDate = new Date(gameDateEnd).getTime();
     if (startDate >= endDate || now >= endDate) {
-      alert('Užpildykite orientacinių varžybų kambario duomenis teisingai');
+      enqueueSnackbar('Užpildykite orientacinių varžybų kambario duomenis teisingai', {
+        variant: 'error'
+      });
       return;
     }
     setLoading(true);
@@ -142,9 +148,9 @@ export default function GameList() {
         endDateTime: gameDateEnd,
         submissions: []
       });
-      alert('Orientacinių varžybų kambarys sėkmingai sukurtas');
+      enqueueSnackbar('Orientacinių varžybų kambarys sėkmingai sukurtas', { variant: 'success' });
     } catch (err) {
-      alert(err.message);
+      enqueueSnackbar('Įvyko klaida!', { variant: 'error' });
     }
     handleStartClose();
     setRefresh(refresh + 1);
@@ -158,9 +164,9 @@ export default function GameList() {
     try {
       const gameDoc = doc(db, 'games', selectedId);
       await deleteDoc(gameDoc);
-      alert('Orientacinės varžybos sėkmingai pašalintos');
+      enqueueSnackbar('Orientacinės varžybos sėkmingai pašalintos', { variant: 'success' });
     } catch (err) {
-      alert(err.message);
+      enqueueSnackbar('Įvyko klaida!', { variant: 'error' });
     }
     handleDeleteClose();
     setRefresh(refresh + 1);
@@ -357,7 +363,9 @@ export default function GameList() {
                           sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#008724' }}
                           onClick={() => {
                             navigator.clipboard.writeText(startedGame.id);
-                            alert('Orientacinių varžybų kambario kodas nukopijuotas');
+                            enqueueSnackbar('Orientacinių varžybų kambario kodas nukopijuotas', {
+                              variant: 'success'
+                            });
                           }}>
                           <ContentCopyIcon />
                         </Button>

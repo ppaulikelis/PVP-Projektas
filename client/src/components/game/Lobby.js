@@ -3,10 +3,12 @@ import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import { CustomCard } from '../additional/CustomCard';
 import { LeftPageTitle } from '../additional/PageTitle';
+import { useSnackbar } from 'notistack';
 
 export default function Lobby(props) {
   const { startedGame, game, canStart, stateDecider } = props;
   const [teamName, setTeamName] = useState('');
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleSumbit = () => {
     if (teamName != '') {
@@ -14,7 +16,7 @@ export default function Lobby(props) {
       localStorage.setItem('teamName', teamName);
       stateDecider(startedGame);
     } else {
-      alert('Įveskite komandos pavadinimą');
+      enqueueSnackbar('Įveskite komandos pavadinimą', { variant: 'error' });
     }
   };
 

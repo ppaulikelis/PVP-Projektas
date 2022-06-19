@@ -21,6 +21,7 @@ import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { useAuthContext } from '../../contexts/AuthContext';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useSnackbar } from 'notistack';
 
 export default function Game(props) {
   const { user } = useAuthContext();
@@ -28,6 +29,7 @@ export default function Game(props) {
   const [submission, setSubmission] = useState({});
   const [unlocks, setUnlocks] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     const emptyAnswersArray = new Array(game.questions.length).fill(0).map((answer, index) => ({
@@ -49,10 +51,10 @@ export default function Game(props) {
     try {
       const startedGameDoc = doc(db, 'startedGames', startedGame.id);
       await updateDoc(startedGameDoc, { submissions: arrayUnion(submission) });
-      alert('Atsakymai priimti');
+      enqueueSnackbar('Atsakymai priimti', { variant: 'success' });
       location.reload();
     } catch (err) {
-      alert(err.message);
+      enqueueSnackbar('Įvyko klaida!', { variant: 'error' });
     }
     setLoading(false);
   };
@@ -147,20 +149,23 @@ const LockedQuestion = (props) => {
   const { question, handleUnlocksChange } = props;
   const [key, setKey] = useState('');
   const [dialogOpen, setDialogOpen] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
 
   const checkKey = () => {
     if (key == question.key) {
       handleUnlocksChange(question.id);
+      enqueueSnackbar('Klausimas atrakintas', { variant: 'success' });
     } else {
-      alert('Neteisingas raktas');
+      enqueueSnackbar('Neteisingas raktas', { variant: 'error' });
     }
   };
 
   const ckeckQRKey = (result) => {
     if (result == question.key) {
       handleUnlocksChange(question.id);
+      enqueueSnackbar('Klausimas atrakintas', { variant: 'success' });
     } else {
-      alert('Neteisingas raktas');
+      enqueueSnackbar('Neteisingas raktas', { variant: 'error' });
     }
   };
 

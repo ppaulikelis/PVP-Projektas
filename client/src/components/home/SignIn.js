@@ -12,11 +12,13 @@ import { useAuthContext } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
 import { CustomCard } from '../additional/CustomCard';
+import { useSnackbar } from 'notistack';
 
 export default function SignIn() {
   const { signIn } = useAuthContext();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,16 +26,16 @@ export default function SignIn() {
     const email = data.get('email');
     const password = data.get('password');
     if (email == '' || password == '') {
-      alert('Užpildykite prisijungimo laukelius');
+      enqueueSnackbar('Užpildykite prisijungimo laukelius', { variant: 'error' });
       return;
     }
     setLoading(true);
     try {
       await signIn(email, password);
-      alert('Sėkmingai prisijungėte');
+      enqueueSnackbar('Sėkmingai prisijungėte', { variant: 'success' });
       navigate('/creator');
     } catch (err) {
-      alert(err.message);
+      enqueueSnackbar('Įvyko klaida!', { variant: 'error' });
     }
     setLoading(false);
   };

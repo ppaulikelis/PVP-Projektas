@@ -23,6 +23,7 @@ import { useNavigate } from 'react-router-dom';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import Tooltip from '@mui/material/Tooltip';
+import { useSnackbar } from 'notistack';
 
 export default function Results() {
   const navigate = useNavigate();
@@ -38,6 +39,7 @@ export default function Results() {
   const startedGamesCollectionRef = collection(db, 'startedGames');
   const q = query(gamesCollectionRef, where('user', '==', user.uid));
   const q1 = query(startedGamesCollectionRef, where('user', '==', user.uid));
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     getDocs(q).then((res1) => {
@@ -85,9 +87,9 @@ export default function Results() {
     try {
       const gameDoc = doc(db, 'startedGames', selectedId);
       await deleteDoc(gameDoc);
-      alert('Orientacinių varžybų kambarys sėkmingai pašalintas');
+      enqueueSnackbar('Orientacinių varžybų kambarys sėkmingai pašalintas', { variant: 'success' });
     } catch (err) {
-      alert(err.message);
+      enqueueSnackbar('Įvyko klaida!', { variant: 'error' });
     }
     handleDeleteClose();
     setRefresh(refresh + 1);
@@ -182,7 +184,9 @@ export default function Results() {
                           sx={{ ml: '10px', borderRadius: '69px', backgroundColor: '#9540DF' }}
                           onClick={() => {
                             navigator.clipboard.writeText(startedGame.id);
-                            alert('Orientacinių varžybų kambario kodas nukopijuotas');
+                            enqueueSnackbar('Orientacinių varžybų kambario kodas nukopijuotas', {
+                              variant: 'success'
+                            });
                           }}>
                           <ContentCopyIcon />
                         </Button>

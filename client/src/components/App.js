@@ -2,6 +2,7 @@ import React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { AuthProvider } from '../contexts/AuthContext';
 import MainRouter from './MainRouter';
+import { SnackbarProvider } from 'notistack';
 
 const theme = createTheme({
   palette: {
@@ -31,7 +32,9 @@ function App() {
   return (
     <AuthProvider>
       <ThemeProvider theme={theme}>
-        <MainRouter />
+        <SnackbarProvider maxSnack={3}>
+          <MainRouter />
+        </SnackbarProvider>
       </ThemeProvider>
     </AuthProvider>
   );
